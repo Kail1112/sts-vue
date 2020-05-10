@@ -7,6 +7,7 @@
       <!-- Правая часть компонента -->
       <div class="col-auto">
         <div class="row row-small">
+
           <!-- Корзина пользователя -->
           <div class="col-auto">
             <button class="header-btn">
@@ -14,6 +15,7 @@
             </button>
           </div>
           <!-- Корзина пользователя - END -->
+
           <!-- Сравнение -->
           <div class="col-auto">
             <button class="header-btn">
@@ -21,30 +23,13 @@
             </button>
           </div>
           <!-- Сравнение - END -->
+
           <!-- Лк | Авторизация -->
           <div class="col-auto">
-            <PopUp :keyPopUp="'user-panel'"
-                   :btn="{tagName: 'div', className: 'header-btn__user'}">
-              <!-- Кнопка -->
-              <template v-slot:btn>
-                <p class="text">
-                  <small>
-                    <button>Авторизация</button> | <button>Регистрация</button>
-                  </small>
-                </p>
-                <p class="sts-icon sts-iconuser"></p>
-                <p class="sts-icon sts-iconarrow-bottom"></p>
-              </template>
-              <!-- Кнопка - END -->
-
-              <!-- Контент -->
-              <template v-slot:body>
-                <FormsLogin/>
-              </template>
-              <!-- Контент - END -->
-            </PopUp>
+            <HeaderUserPanel :event-add-elements="eventAddElements"/>
           </div>
           <!-- Лк | Авторизация - END -->
+
         </div>
       </div>
       <!-- Правая часть компонента - END -->
@@ -53,14 +38,22 @@
 </template>
 
 <script>
-    import PopUp from "../../../PopUp/PopUp";
-    import FormsLogin from "../../../Forms/FormsLogin";
+  import HeaderUserPanel from "./components/HeaderUserPanel/HeaderUserPanel";
 
-    export default {
-        name: "HeaderUser",
-        components: {
-            PopUp,
-            FormsLogin
-        }
+  export default {
+    name: "HeaderUser",
+    props: {
+      eventAddElements: { type: Function, default: () => null }
+    },
+    methods: {
+      /// changeActiveTabUserPanel - активный таб в лк пользователя
+      changeActiveTabUserPanel (tab) {
+        console.log(tab)
+      },
+      /*----------------------*/
+    },
+    components: {
+      HeaderUserPanel
     }
+  }
 </script>
