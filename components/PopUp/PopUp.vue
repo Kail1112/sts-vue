@@ -9,16 +9,19 @@
       <slot name="btn"/>
     </PopUpBtn>
     <!-- popup btn - END -->
-    <div :class="display | setClassForHolder(opacity)"  ref="popupHolder">
-      <slot name="top"/>
-      <!-- popup body -->
-      <div class="popup-body" ref="popupBody"
-           :style="{maxHeight: `${maxHeight}px`}">
-        <slot name="body"/>
+    <transition name="fade" v-on:before-enter="beforeEnterAnimation">
+<!--      <div :class="display | setClassForHolder(opacity)"  ref="popupHolder">-->
+      <div class="popup-holder" v-if="isOpened" ref="popupHolder">
+        <slot name="top"/>
+        <!-- popup body -->
+        <div class="popup-body" ref="popupBody"
+             :style="{maxHeight: `${maxHeight}px`}">
+          <slot name="body"/>
+        </div>
+        <!-- popup body - END -->
+        <slot name="bottom"/>
       </div>
-      <!-- popup body - END -->
-      <slot name="bottom"/>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -34,36 +37,15 @@
     data () {
       return {
         maxHeight: 0,
-        display: false,
-        opacity: false,
-        timeOutAnimation: null
+        timeOutAnimation: ''
       }
     },
     watch: {
-      /// запуск анимации показа
+      ///isOpened
       isOpened (status) {
         if (status) {
-          /* Если попап был закрыт */
-          if (this.timeOutAnimation !== null) {
-            clearTimeout(this.timeOutAnimation)
-            this.timeOutAnimation = null
-          }
-          if (!this.display) this.display = true
           this.setHeightBody()
           this.setPosition()
-          this.timeOutAnimation = setTimeout(() => {
-            if (!this.opacity) this.opacity = true
-          }, 25)
-        } else {
-          /* Если попап был открыт */
-          if (this.timeOutAnimation !== null) {
-            clearTimeout(this.timeOutAnimation)
-            this.timeOutAnimation = null
-          }
-          if (this.opacity) this.opacity = false
-          this.timeOutAnimation = setTimeout(() => {
-            if (this.display) this.display = false
-          }, 250)
         }
       },
       /*----------------------*/
@@ -88,6 +70,13 @@
       eventAddElements: { type: Function, default: () => null }
     },
     methods: {
+      /// beforeEnterAnimation - метод для позиционирования попапа
+      beforeEnterAnimation (e) {
+        this.setHeightBody(e)
+        this.setPosition(e)
+      },
+      /*----------------------*/
+
       /// getValueStore - получить значение из стора
       getValueStore (key = '') {
         if (key !== '') return this.$root.$store.getters[key]
@@ -107,10 +96,10 @@
       /*----------------------*/
 
       /// setHeightBody - установка высоты для попапа
-      setHeightBody () {
+      setHeightBody (component = undefined) {
         const refs = this.$refs
         const componentBtn = refs?.popupBtn?.$el ?? false
-        const componentMain = refs?.popupBody ?? undefined
+        const componentMain = component === undefined ? refs?.popupBody ?? undefined : component
         const checkWindow = window ?? false
         if (checkWindow !== false) {
           calculateMaxHeight.then(async (res) => {
@@ -121,10 +110,10 @@
       /*----------------------*/
 
       /// setPositionRight - установка позиционирования по краю
-      setPosition () {
+      setPosition (component = undefined) {
         if (document && window) {
           const container = document.querySelector('header.header').querySelectorAll('.container')[0] ?? undefined
-          const popup = this?.$refs?.popupHolder ?? undefined
+          const popup = component === undefined ? this?.$refs?.popupHolder ?? undefined : component
           const componentBtn = this?.$refs?.popupBtn?.$el ?? undefined
           if (container !== undefined && popup !== undefined && componentBtn !== undefined) {
             popup.style.left = ''

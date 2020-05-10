@@ -8,19 +8,17 @@
   top: 0;
 }
 .popup-holder {
-  display: none;
+  display: block;
   position: absolute;
   bottom: 0;
   transform: translateY(100%);
   background-color: #fff;
   box-shadow: $default-box-shadow;
-  opacity: 0;
-  transition: opacity .25s linear;
-  &.display {
-    display: block!important;
+  &.fade-enter-active, &.fade-leave-active {
+    transition: opacity .15s linear;
   }
-  &.opacity {
-    opacity: 1!important;
+  &.fade-enter, &.fade-leave-to{
+    opacity: 0;
   }
 }
 .popup-body {

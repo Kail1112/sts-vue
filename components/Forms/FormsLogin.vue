@@ -9,7 +9,7 @@
       <div class="normal-block">
         <div class="row row-small justify-space-between">
           <div class="col-auto">
-            <button class="button border">Войти</button>
+            <button class="button">Войти</button>
           </div>
           <div v-if="hasRegisterBtn" class="col-auto">
             <span class="button border"
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import './forms-login.scss';
+  import './index.scss';
 
   import Inputs from "../Inputs/Inputs";
 

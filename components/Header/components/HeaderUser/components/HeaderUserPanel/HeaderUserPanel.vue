@@ -35,9 +35,7 @@
     methods: {
       /// changeActiveTabUserPanel - активный таб в лк пользователя
       changeActiveTabUserPanel (tab) {
-        const checkResizeObserver = ResizeObserver ?? false
-
-        console.log([checkResizeObserver])
+        console.log(tab)
       },
       /*----------------------*/
     },
