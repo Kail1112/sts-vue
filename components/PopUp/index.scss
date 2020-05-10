@@ -27,4 +27,8 @@
   display: block;
   max-width: 100%;
   padding: 16px / $font-size * 1em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }

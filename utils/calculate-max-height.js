@@ -14,32 +14,29 @@ const getHeightNode = import('./get-height-node.js') /// Функция полу
 
 const calculateMaxHeight = async (window, current, nodes = [], dependence) => {
   if (window) {
-    let balance = window.innerHeight;
-    balance -= nodes.length > 0 ? nodes.reduce((acc, item) => {
-      acc += getHeightNode.then(res => {
-        res.default(window, item)
-      })
-      return acc
-    }, 0) : 0
-    let dependenceTop = 0
-    if (dependence !== undefined) {
-      dependenceTop = dependence.getBoundingClientRect().top
-      balance -= dependenceTop
-    }
-    if (current !== undefined) {
-      const currentRect = current.getBoundingClientRect(),
-        currentTop = currentRect.top;
-      let dependenceAllValues = 0
-      if (dependenceTop > 0) {
-        await getHeightNode.then(res => {
-          const result = res.default(window, dependence)
-          dependenceAllValues = dependenceTop + result
-        })
+    return await getHeightNode.then((getHeightNode) => {
+      let balance = window.innerHeight;
+      balance -= nodes.length > 0 ? nodes.reduce((acc, item) => {
+        acc += getHeightNode.default(window, item)
+        return acc
+      }, 0) : 0
+      let dependenceTop = 0
+      if (dependence !== undefined) {
+        dependenceTop = dependence.getBoundingClientRect().top + getHeightNode.default(window, dependence)
+        balance -= dependenceTop
       }
-      if (dependenceTop > 0 && currentTop > dependenceAllValues)
-        balance -= currentTop - dependenceAllValues
-    }
-    return balance
+      if (current !== undefined) {
+        const currentRect = current.getBoundingClientRect(),
+          currentTop = currentRect.top;
+        let dependenceAllValues = 0
+        if (dependenceTop > 0) {
+          dependenceAllValues = dependenceTop + getHeightNode.default(window, dependence)
+        }
+        if (dependenceTop > 0 && currentTop > dependenceAllValues)
+          balance -= currentTop - dependenceAllValues
+      }
+      return balance
+    })
   }
   return 0
 }
