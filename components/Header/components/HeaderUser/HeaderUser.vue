@@ -23,15 +23,26 @@
           <!-- Сравнение - END -->
           <!-- Лк | Авторизация -->
           <div class="col-auto">
-            <div class="header-btn__user">
-              <p class="text">
-                <small>
-                  <button>Авторизация</button> | <button>Регистрация</button>
-                </small>
-              </p>
-              <p class="sts-icon sts-iconuser"></p>
-              <p class="sts-icon sts-iconarrow-bottom"></p>
-            </div>
+            <PopUp :keyPopUp="'user-panel'"
+                   :btn="{tagName: 'div', className: 'header-btn__user'}">
+              <!-- Кнопка -->
+              <template v-slot:btn>
+                <p class="text">
+                  <small>
+                    <button>Авторизация</button> | <button>Регистрация</button>
+                  </small>
+                </p>
+                <p class="sts-icon sts-iconuser"></p>
+                <p class="sts-icon sts-iconarrow-bottom"></p>
+              </template>
+              <!-- Кнопка - END -->
+
+              <!-- Контент -->
+              <template v-slot:body>
+                <FormsLogin/>
+              </template>
+              <!-- Контент - END -->
+            </PopUp>
           </div>
           <!-- Лк | Авторизация - END -->
         </div>
@@ -42,7 +53,14 @@
 </template>
 
 <script>
+    import PopUp from "../../../PopUp/PopUp";
+    import FormsLogin from "../../../Forms/FormsLogin";
+
     export default {
-        name: "HeaderUser"
+        name: "HeaderUser",
+        components: {
+            PopUp,
+            FormsLogin
+        }
     }
 </script>

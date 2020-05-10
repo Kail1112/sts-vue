@@ -1,0 +1,30 @@
+@import '../../assets/var';
+
+.popup {
+  display: block;
+  max-width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.popup-holder {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+  background-color: #fff;
+  box-shadow: $default-box-shadow;
+  opacity: 0;
+  transition: opacity .25s linear;
+  &.display {
+    display: block!important;
+  }
+  &.opacity {
+    opacity: 1!important;
+  }
+}
+.popup-body {
+  display: block;
+  max-width: 100%;
+  padding: 16px / $font-size * 1em;
+}
