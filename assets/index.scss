@@ -1,0 +1,201 @@
+@import "var";
+@import "./css/00.fonts";
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+::selection {
+  color: #fff;
+  background-color: $color-red;
+}
+
+body, html {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: $font-size
+}
+
+body, html, button, input, textarea, blockquote {
+  font-family: $font-family;
+}
+
+button, input, textarea {
+  -webkit-appearance: unset;
+  border-radius: 0;
+  outline: none;
+}
+
+.button {
+  display: inline-block;
+  max-width: 100%;
+  padding: (10px / 12px * 1em) (20.5px / 12px * 1em);
+  font-size: 12px / $font-size * 1em;
+  line-height: 15px / 12px * 1em;
+  cursor: pointer;
+  border: 1px solid $color-red;
+  background-color: $color-red;
+  color: #fff;
+  box-shadow: none;
+  margin: 0 0 (10px / 12px * 1em);
+  transition: background-color .25s linear,
+  border-color .25s linear,
+  color .25s linear,
+  box-shadow .25s linear;
+  &:hover {
+    background-color: #fff;
+    color: $color-red;
+  }
+  &:active {
+    background-color: $color-red-thin;
+    border-color: rgba(201, 6, 6, 0.75);
+    color: #fff;
+    box-shadow: inset 0 0 (17px / 12px * 1em) 0 rgba(201, 6, 6, 0.75);
+  }
+  &.border {
+    background-color: #fff;
+    color: $color-red;
+    &:hover {
+      background-color: $color-red-thin;
+      color: #fff;
+      border-color: $color-red-thin;
+    }
+    &:active {
+      background-color: $color-red;
+      color: #fff;
+      border-color: $color-red-thin;
+      box-shadow: inset 0 0 (17px / 12px * 1em) 0 rgba(233, 87, 87, 0.75);
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: 400;
+  display: block;
+  max-width: 100%;
+  margin: 0;
+  b {
+    font-weight: 700;
+  }
+}
+
+h1 {
+  font-size: 32px / $font-size * 1em;
+  line-height: 40px / 32px * 1em;
+  margin-bottom: 24px / 32px * 1em;
+}
+
+h2 {
+  font-size: 24px / $font-size * 1em;
+  line-height: 30px / 24px * 1em;
+  margin-bottom: 18px / 24px * 1em;
+}
+
+h3 {
+  font-size: 18px / $font-size * 1em;
+  line-height: 22.5px / 18px * 1em;
+  margin-bottom: 15px / 18px * 1em;
+}
+
+h4 {
+  font-size: 16px / $font-size * 1em;
+  line-height: 20px / 16px * 1em;
+  margin-bottom: 15px / 16px * 1em;
+}
+
+h5 {
+  font-size: 14px / $font-size * 1em;
+  line-height: 17.5px / 14px * 1em;
+  margin-bottom: 15px / 14px * 1em;
+}
+
+h6 {
+  font-size: 10px / $font-size * 1em;
+  line-height: 12.5px / 10px * 1em;
+  margin-bottom: 15px / 10px * 1em;
+}
+
+p {
+  font-size: 16px / $font-size * 1em;
+  line-height: 20px / 16px * 1em;
+  margin-bottom: 15px / 16px * 1em;
+  b {
+    font-weight: 700;
+  }
+}
+
+.not-found {
+  display: block;
+  width: 100%;
+  h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 66px / $font-size * 1em;
+    color: $color-red;
+    font-weight: 700;
+    margin-bottom: 5px / 66px * 1em;
+    font-style: italic;
+  }
+  h3 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.main {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.content-page {
+  display: block;
+  width: 100%;
+  padding-top: 15px / $font-size * 1em;
+  padding-bottom: 15px / $font-size * 1em;
+}
+
+.list-for-links {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  li {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 0;
+    &:not(:last-child) {
+      margin-bottom: 5px / $font-size * 1em;
+    }
+  }
+}
+.links {
+  display: inline-block;
+  color: $color-red;
+  text-decoration: none;
+  font-size: 16px / $font-size * 1em;
+  line-height: 20px / 16px * 1em;
+  small {
+    font-size: 14px / 16px * 1em;
+    line-height: 17.5px / 14px * 1em;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.color-white {
+  color: #fff;
+}
+
+.text-align-right {
+  text-align: right!important;
+}
+
+@import "./css/01.typography";
+@import "./css/02.grid";

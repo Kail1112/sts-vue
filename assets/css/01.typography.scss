@@ -1,0 +1,72 @@
+@import "../var";
+
+.typography {
+  ul {
+    display: block;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    li {
+      display: block;
+      list-style: none;
+      margin: 0 0 (15px / 16px * 1em);
+      padding: 0 0 0 (16px / 16px * 1em);
+      position: relative;
+      left: 0;
+      top: 0;
+      font-size: 16px / $font-size * 1em;
+      line-height: 20px / 16px * 1em;
+      b {
+        font-weight: 700;
+      }
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 6px / 16px * 1em;
+        width: 6px / 16px * 1em;
+        height: 6px / 16px * 1em;
+        background-color: $color-red;
+        border-radius: 3px / 16px * 1em;
+      }
+    }
+  }
+  &.ul-variant-2 {
+    ul {
+      li {
+        padding-left: 0;
+        &:before {
+          display: inline-block;
+          vertical-align: middle;
+          position: static;
+          margin-right: 10px / 16px * 1em;
+        }
+      }
+    }
+  }
+  ol {
+    display: block;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    counter-reset: num-list;
+    li {
+      display: block;
+      list-style: none;
+      margin: 0 0 (15px / 16px * 1em);
+      padding: 0;
+      font-size: 16px / $font-size * 1em;
+      line-height: 20px / 16px * 1em;
+      counter-increment: num-list;
+      &:before {
+        content: counter(num-list)'.';
+        display: inline-block;
+        vertical-align: baseline;
+        margin-right: 3px / 16px * 1em;
+        color: $color-red;
+        font-weight: 700;
+      }
+    }
+  }
+}
