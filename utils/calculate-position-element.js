@@ -23,7 +23,7 @@ const calculatePositionElement = (el, dependence, container, window) => {
       const getWindowWidth = (window) => window.innerWidth
 
       const containerRect = container.getBoundingClientRect(),
-        containerLeft = containerRect.left,
+        containerLeft = containerRect.left + parseFloat(window.getComputedStyle(container).paddingLeft),
         containerWidth = container.clientWidth,
         containerAllValues = containerLeft + containerWidth;
 
@@ -32,29 +32,31 @@ const calculatePositionElement = (el, dependence, container, window) => {
         dependenceWidth = res.default(window, dependence),
         dependenceRight = getWindowWidth(window) - (dependenceWidth + dependenceLeft);
 
-      const getAllValues = (window, el) => {
+      const getAllValues = (result, window, el) => {
         const widthEl = res.default(window, el),
           elRect = el.getBoundingClientRect(),
-          elPositionLeft = result.left !== '' ? parseInt(result.left, 10) : elRect.left
+          elPositionLeft = result.left !== '' ? parseFloat(result.left) : elRect.left
+        const all = result.right !== '' ? parseFloat(result.right) + widthEl : widthEl + elPositionLeft
+        // console.log(all, elPositionLeft, containerAllValues, containerLeft)
         return {
           width: widthEl,
           left: elPositionLeft,
-          all: result.right !== '' ? getWindowWidth(window) - parseInt(result.right, 10) : widthEl + elPositionLeft
+          all
         }
       }
-      if (containerLeft > getAllValues(window, el).left) {
+      if (getAllValues(result, window, el).all > containerAllValues) {
+        result.left = ''
+        result.right = `${dependenceRight}px`
+      }
+      if (containerLeft > getAllValues(result, window, el).left) {
         /* Если левый край попапа выходит за рамки контейнера */
         result.left = `${dependenceLeft}px`
         result.right = ''
       }
-      if (getAllValues(window, el).all > containerAllValues) {
+      if (getAllValues(result, window, el).all - containerLeft > containerWidth) {
         result.left = ''
         result.right = `${dependenceRight}px`
-      }
-      if (getAllValues(window, el).all > getWindowWidth(window)) {
-        result.maxWidth = `${containerWidth}px`
-        result.left = `-${dependenceLeft}px`
-        result.right = `-${dependenceRight}px`
+        result.maxWidth = `${containerWidth - (parseFloat(window.getComputedStyle(container).paddingLeft) + parseFloat(window.getComputedStyle(container).paddingRight))}px`
       }
       return {
         ...result,

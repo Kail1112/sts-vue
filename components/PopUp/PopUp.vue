@@ -131,6 +131,7 @@
             popup.style.right = ''
             calculatePositionElement.then(async res => {
               const result = await res.default(popup, componentBtn, container, window)
+              // console.log(result)
               popup.style.maxWidth = result.maxWidth
               popup.style.left = result.left
               popup.style.right = result.right
