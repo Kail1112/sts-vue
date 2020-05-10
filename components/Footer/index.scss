@@ -1,0 +1,40 @@
+@import "../../assets/var";
+
+.footer {
+  display: block;
+  width: 100%;
+  background-color: $color-red;
+  padding-top: 10px / $font-size * 1em;
+  padding-bottom: 10px / $font-size * 1em;
+}
+.footer-top {
+  display: block;
+  width: 100%;
+  padding: (15px / $font-size * 1em) 0;
+}
+.footer-bottom {
+  display: block;
+  width: 100%;
+  border-top: 1px solid #fff;
+  padding-top: 15px / $font-size * 1em;
+  padding-bottom: 5px / $font-size * 1em;
+  p {
+    margin-bottom: 0;
+    color: #fff;
+  }
+}
+
+@media (max-width: ($media-xxl - 1px) / $font-size * 1em) {
+  .footer-bottom {
+    font-size: 14px;
+  }
+}
+@media (min-width: $media-xxl / $font-size * 1em) {
+  .footer-top {
+    .links {
+      small {
+        font-size: inherit;
+      }
+    }
+  }
+}

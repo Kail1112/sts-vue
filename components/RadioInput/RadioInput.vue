@@ -3,7 +3,7 @@
     <input :type="type"
            :checked="checked"
            :name="name"
-           @change="change">
+           @change="change" />
     <span class="switch-input__indicator"><span class="switch-input__dot"></span></span>
     <RadioInputSignature :signature="signature"/>
   </label>
