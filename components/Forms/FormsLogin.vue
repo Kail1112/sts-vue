@@ -9,10 +9,10 @@
       <div class="normal-block">
         <div class="row row-small justify-space-between">
           <div class="col-auto">
-            <button class="button">Войти</button>
+            <button class="button no-margin">Войти</button>
           </div>
           <div v-if="hasRegisterBtn" class="col-auto">
-            <span class="button border"
+            <span class="button border no-margin"
                   @click="onClickRegister">Зарегистрироваться</span>
           </div>
         </div>

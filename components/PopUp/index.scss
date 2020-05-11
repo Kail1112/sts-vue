@@ -14,19 +14,87 @@
   transform: translateY(100%);
   background-color: #fff;
   box-shadow: $default-box-shadow;
+  overflow-x: hidden;
+  overflow-y: hidden;
   &.fade-enter-active, &.fade-leave-active {
-    transition: opacity .15s linear;
+    transition: opacity .25s linear;
   }
   &.fade-enter, &.fade-leave-to{
     opacity: 0;
   }
+  .animation-block {
+    background-color: #fff;
+  }
 }
+.popup-top {
+  display: block;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: $color-red;
+  padding: 16px / $font-size * 1em;
+  p, h1, h2, h3, h4, h5, h6 {
+    width: 100%;
+    padding: 0 (37px / 16px * 1em);
+    font-size: 16px / $font-size * 1em;
+    line-height: 20px / 16px * 1em;
+    color: #fff;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+.popup-top__left,
+.popup-top__right {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px / $font-size * 1em;
+  height: 20px / $font-size * 1em;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  -webkit-appearance: none;
+  color: #fff;
+  .sts-icon {
+    font-size: 12px / $font-size * 1em;
+  }
+}
+.popup-top__left {
+  left: 16px / $font-size * 1em;
+}
+.popup-top__right {
+  right: 16px / $font-size * 1em;
+}
+
 .popup-body {
   display: block;
+  position: relative;
+  left: 0;
+  top: 0;
   max-width: 100%;
+  min-width: 241.5px / $font-size * 1em;
   padding: 16px / $font-size * 1em;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
+  .animation-block {
+    top: 16px / $font-size * 1em;
+  }
+  &.no-scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+.popup-bottom {
+  display: block;
+  width: 100%;
+  border-top: 1px solid $color-gray-dark
 }

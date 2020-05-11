@@ -10,6 +10,7 @@
 
           <!-- Корзина пользователя -->
           <div class="col-auto">
+            <HeaderUserCart/>
             <button class="header-btn">
               <span class="sts-icon sts-iconshopping-cart"></span>
             </button>
@@ -39,6 +40,7 @@
 
 <script>
   import HeaderUserPanel from "./components/HeaderUserPanel/HeaderUserPanel";
+  import HeaderUserCart from "./components/HeaderUserCart/HeaderUserCart";
 
   export default {
     name: "HeaderUser",
@@ -53,7 +55,8 @@
       /*----------------------*/
     },
     components: {
-      HeaderUserPanel
+      HeaderUserPanel,
+      HeaderUserCart
     }
   }
 </script>

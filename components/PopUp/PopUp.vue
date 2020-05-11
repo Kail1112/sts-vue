@@ -14,7 +14,7 @@
       <div class="popup-holder" v-if="isOpened" ref="popupHolder">
         <slot name="top"/>
         <!-- popup body -->
-        <div class="popup-body" ref="popupBody"
+        <div :class="noScroll | setClassForBody(classForBody)" ref="popupBody"
              :style="{maxHeight: `${maxHeight}px`}">
           <slot name="body"/>
         </div>
@@ -37,7 +37,9 @@
     data () {
       return {
         maxHeight: 0,
-        timeOutAnimation: ''
+        timeOutAnimation: '',
+        timeOutSetScroll: 0,
+        noScroll: false,
       }
     },
     watch: {
@@ -46,6 +48,34 @@
         if (status) {
           this.setHeightBody()
           this.setPosition()
+        }
+      },
+      /*----------------------*/
+
+      ///startCalc
+      initCalc (param) {
+        const {status, callback} = param
+        if (status) {
+          new Promise(resolve => {
+            let count = 0
+            const callback = (status) => {
+              if (status) {
+                count += 1
+                if (count === 2) {
+                  if (this.timeOutSetScroll !== 0) {
+                    clearTimeout(this.timeOutSetScroll)
+                  }
+                  this.timeOutSetScroll = setTimeout(() => {
+                    if (this.noScroll) this.noScroll = false
+                  }, 285)
+                  resolve()
+                }
+              }
+            }
+            if (!this.noScroll) this.noScroll = true
+            this.setHeightBody(undefined, callback)
+            this.setPosition(undefined, callback)
+          }).then(() => callback(true))
         }
       },
       /*----------------------*/
@@ -67,7 +97,9 @@
     props: {
       keyPopUp: { type: String, default: '', required: true },
       btn: { type: Object, default: () => ({tagName: '', className: ''})},
-      eventAddElements: { type: Function, default: () => null }
+      classForBody: { type: String, default: '' },
+      eventAddElements: { type: Function, default: () => null },
+      initCalc: { type: Object, default: () => ({status: false, callback: () => null}) }
     },
     methods: {
       /// beforeEnterAnimation - метод для позиционирования попапа
@@ -96,7 +128,7 @@
       /*----------------------*/
 
       /// setHeightBody - установка высоты для попапа
-      setHeightBody (component = undefined) {
+      setHeightBody (component = undefined, callback = (status) => false) {
         const refs = this.$refs
         const componentBtn = refs?.popupBtn?.$el ?? false
         const componentMain = component === undefined ? refs?.popupBody ?? undefined : component
@@ -104,13 +136,14 @@
         if (checkWindow !== false) {
           calculateMaxHeight.then(async (res) => {
             this.maxHeight = await res.default(window, componentMain, [], componentBtn)
+            callback(true)
           })
         }
       },
       /*----------------------*/
 
       /// setPositionRight - установка позиционирования по краю
-      setPosition (component = undefined) {
+      setPosition (component = undefined, callback = (status) => false) {
         if (document && window) {
           const container = document.querySelector('header.header').querySelectorAll('.container')[0] ?? undefined
           const popup = component === undefined ? this?.$refs?.popupHolder ?? undefined : component
@@ -120,10 +153,10 @@
             popup.style.right = ''
             calculatePositionElement.then(async res => {
               const result = await res.default(popup, componentBtn, container, window)
-              // console.log(result)
               popup.style.maxWidth = result.maxWidth
               popup.style.left = result.left
               popup.style.right = result.right
+              callback(true)
             })
           }
         }
@@ -133,6 +166,10 @@
     filters: {
       /// setClassForHolder - установка нужных классов
       setClassForHolder: (display, opacity) => `popup-holder${display ? ' display' : ''}${opacity ? ' opacity' : ''}`,
+      /*----------------------*/
+
+      /// setClassForBody
+      setClassForBody: (state, bodyClass) => `popup-body${state ? ' no-scroll' : ''}${bodyClass ? ` ${bodyClass}` : ''}`,
       /*----------------------*/
     },
     computed: {
