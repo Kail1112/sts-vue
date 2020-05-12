@@ -1,0 +1,22 @@
+@import "../../../../assets/var";
+
+.popup-holder {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateY(100%);
+  background-color: #fff;
+  box-shadow: $default-box-shadow;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  &.fade-enter-active, &.fade-leave-active {
+    transition: opacity .25s linear;
+  }
+  &.fade-enter, &.fade-leave-to{
+    opacity: 0;
+  }
+  .animation-block {
+    background-color: #fff;
+  }
+}

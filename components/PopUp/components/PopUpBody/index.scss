@@ -1,0 +1,31 @@
+@import "../../../../assets/var";
+
+.popup-body {
+  display: block;
+  position: relative;
+  left: 0;
+  top: 0;
+  max-width: 100%;
+  padding: 16px / $font-size * 1em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  max-height: calc(100vh - 119px);
+  .animation-block {
+    top: 16px / $font-size * 1em;
+  }
+  &.has-top {
+    max-height: calc(100vh - 171px);
+  }
+  &.no-scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  &.small {
+    min-width: 241.5px / $font-size * 1em;
+  }
+  &.medium {
+    min-width: 400px / $font-size * 1em;
+  }
+}

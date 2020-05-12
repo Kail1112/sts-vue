@@ -2,5 +2,6 @@
 
 .login-form {
   display: block;
-  width: 244px / $font-size * 1em
+  min-width: 244px / $font-size * 1em;
+  max-width: 100%;
 }

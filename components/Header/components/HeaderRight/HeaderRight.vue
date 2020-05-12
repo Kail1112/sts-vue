@@ -1,7 +1,7 @@
 <template>
   <div class="normal-block">
     <HeaderSystem/>
-    <HeaderUser :event-add-elements="eventAddElements"/>
+    <HeaderUser/>
   </div>
 </template>
 
@@ -11,9 +11,6 @@
 
   export default {
     name: "HeaderRight",
-    props: {
-      eventAddElements: { type: Function, default: () => null }
-    },
     components: {
       HeaderSystem,
       HeaderUser

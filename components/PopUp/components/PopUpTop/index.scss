@@ -1,0 +1,54 @@
+@import "../../../../assets/var";
+
+.popup-top {
+  display: block;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: $color-red;
+  padding: 16px / $font-size * 1em;
+  p, h1, h2, h3, h4, h5, h6 {
+    display: block;
+    width: 100%;
+    padding: 0 (37px / 16px * 1em);
+    font-size: 16px / $font-size * 1em;
+    line-height: 20px / 16px * 1em;
+    color: #fff;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.popup-top__left,
+.popup-top__right {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px / $font-size * 1em;
+  height: 20px / $font-size * 1em;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  -webkit-appearance: none;
+  color: #fff;
+  .sts-icon {
+    font-size: 12px / $font-size * 1em;
+  }
+}
+.popup-top__left {
+  left: 16px / $font-size * 1em;
+}
+.popup-top__right {
+  right: 16px / $font-size * 1em;
+}
