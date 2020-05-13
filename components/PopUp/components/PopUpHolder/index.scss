@@ -3,7 +3,7 @@
 .popup-holder {
   display: block;
   position: absolute;
-  bottom: 0;
+  bottom: -5px / $font-size * 1em;
   right: 0;
   transform: translateY(100%);
   background-color: #fff;

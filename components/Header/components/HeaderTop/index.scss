@@ -1,0 +1,108 @@
+@import "../../../../assets/var";
+
+.header-top {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid $color-gray-dark;
+  padding-top: 5px / $font-size * 1em;
+  padding-bottom: 5px / $font-size * 1em;
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 56;
+}
+.header-btn {
+  font-size: 15px / $font-size * 1em;
+  display: block;
+  height: 35px / 15px * 1em;
+  width: 35px / 15px * 1em;
+  position: relative;
+  left: 0;
+  top: 0;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-appearance: unset;
+  border-radius: 0;
+  box-shadow: unset;
+  background-color: transparent;
+  color: #000;
+  transition: color .25s linear, background-color .25s linear, box-shadow .25s linear;
+  .sts-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &:hover, &.active {
+    color: $color-red;
+    background-color: #fff;
+  }
+}
+.header-btn__user {
+  display: block;
+  max-width: 244px / $font-size * 1em;
+  position: relative;
+  left: 0;
+  top: 0;
+  padding: (9px / $font-size * 1em) (17.94px / $font-size * 1em) (9px / $font-size * 1em) (23.06px / $font-size * 1em);
+  border: 0;
+  outline: none;
+  -webkit-appearance: unset;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: unset;
+  color: #000;
+  transition: color .25s linear, background-color .25s linear, box-shadow .25s linear;
+  .text {
+    font-size: 14px / $font-size * 1em;
+    line-height: 17.5px / 14px * 1em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    text-decoration: none;
+    margin: 0;
+    color: inherit;
+    a, button {
+      text-decoration: none;
+      color: inherit;
+      border: inherit;
+      outline: inherit;
+      -webkit-appearance: inherit;
+      border-radius: inherit;
+      background-color: inherit;
+      cursor: inherit;
+      padding: 0;
+    }
+  }
+  .sts-icon {
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    &.sts-iconuser {
+      font-size: 15px / $font-size * 1em;
+      left: 0;
+    }
+    &.sts-iconarrow-bottom {
+      font-size: 4px / $font-size * 1em;
+      right: 0;
+      transition: transform .25s linear;
+    }
+  }
+  &:hover, &.active {
+    color: $color-red;
+    background-color: #fff;
+  }
+  &.active {
+    .sts-icon {
+      &.sts-iconarrow-bottom {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+}

@@ -11,12 +11,12 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
-  max-height: calc(100vh - 119px);
+  max-height: calc(100vh - 50px);
   .animation-block {
     top: 16px / $font-size * 1em;
   }
   &.has-top {
-    max-height: calc(100vh - 171px);
+    max-height: calc(100vh - 102px);
   }
   &.no-scroll {
     overflow-x: hidden;
@@ -26,6 +26,6 @@
     min-width: 241.5px / $font-size * 1em;
   }
   &.medium {
-    min-width: 400px / $font-size * 1em;
+    min-width: 325px / $font-size * 1em;
   }
 }

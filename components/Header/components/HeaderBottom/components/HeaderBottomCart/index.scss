@@ -1,0 +1,89 @@
+@import '../../../../../../assets/var';
+
+.header-cart {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 60px / $font-size * 1em;
+  padding: (11px / $font-size * 1em) (60px / $font-size * 1em);
+  background-color: $color-red-thin;
+  cursor: pointer;
+  transition: background-color .25s linear;
+  .sts-icon {
+    font-size: 30px / $font-size * 1em;
+    color: #fff;
+    display: block;
+    position: absolute;
+    left: 15px / 30px * 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+  .text {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 16px / $font-size * 1em;
+    line-height: 20px / 16px * 1em;
+    color: #fff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity .25s linear;
+    & + .text {
+      font-size: 14px / $font-size * 1em;
+      line-height: 17.5px / 14px * 1em;
+      opacity: 0.5;
+    }
+    b {
+      font-weight: 700;
+    }
+  }
+  .counter {
+    font-size: 14px / $font-size * 1em;
+    line-height: 17.5px / 14px * 1em;
+    color: #fff;
+    background-color: $color-red;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 15px / 14px * 1em;
+    transform: translateY(-50%);
+    height: 30px / 14px * 1em;
+    width: 30px / 14px * 1em;
+    border-radius: 100%;
+    transition: background-color .25s linear;
+    span {
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+  }
+  &:hover, &.active {
+    background-color: $color-red-dark;
+    .counter {
+      background-color: $color-red-thin;
+      .text {
+        & + .text {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+
+.popup-body-cart {
+  min-width: 300px / $font-size * 1em;
+  max-height: calc(100vh - 285px);
+}

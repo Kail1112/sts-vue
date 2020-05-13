@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'sts';
-  src:  url('./fonts/sts.eot?s8qhlp');
-  src:  url('./fonts/sts.eot?s8qhlp#iefix') format('embedded-opentype'),
-  url('./fonts/sts.ttf?s8qhlp') format('truetype'),
-  url('./fonts/sts.woff?s8qhlp') format('woff'),
-  url('./fonts/sts.svg?s8qhlp#sts') format('svg');
+  src:  url('./fonts/sts.eot?ihmtlh');
+  src:  url('./fonts/sts.eot?ihmtlh#iefix') format('embedded-opentype'),
+  url('./fonts/sts.ttf?ihmtlh') format('truetype'),
+  url('./fonts/sts.woff?ihmtlh') format('woff'),
+  url('./fonts/sts.svg?ihmtlh#sts') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.sts-iconclock:before {
+  content: "\e90c";
+}
+.sts-iconmenu:before {
+  content: "\e90d";
+}
+.sts-iconsearch:before {
+  content: "\e90e";
+}
 .sts-iconarrow-bottom:before {
   content: "\e900";
 }

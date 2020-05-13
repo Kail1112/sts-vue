@@ -15,11 +15,46 @@ body, html {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: $font-size
+  font-size: $font-size;
+  &.overflow {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
 }
 
 body, html, button, input, textarea, blockquote {
   font-family: $font-family;
+}
+
+.main {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  &.overflow {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+  body, html {
+    &.overflow {
+      max-height: 100%
+    }
+  }
+  .main {
+    &.overflow {
+      max-height: 100%
+    }
+  }
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
 }
 
 button, input, textarea {
@@ -148,12 +183,6 @@ p {
     width: 100%;
     text-align: center;
   }
-}
-
-.main {
-  display: block;
-  width: 100%;
-  overflow: hidden;
 }
 
 .content-page {

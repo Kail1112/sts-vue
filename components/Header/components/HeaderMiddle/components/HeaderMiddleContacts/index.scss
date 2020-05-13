@@ -1,0 +1,65 @@
+@import "../../../../../../assets/var";
+
+.header-middle-info {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: -29px / $font-size * 1em;
+  margin-right: -29px / $font-size * 1em;
+}
+.header-middle-info__item {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  min-height: 55px / $font-size * 1em;
+  padding-left: 29px / $font-size * 1em;
+  padding-right: 29px / $font-size * 1em;
+}
+.header-info-item {
+  display: block;
+  max-width: 100%;
+  position: relative;
+  padding-left: 55px / $font-size * 1em;
+  .sts-icon {
+    font-size: 45px / $font-size * 1em;
+    color: $color-red;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+.header-info-item__title,
+.header-info-item__text {
+  display: block;
+  max-width: 100%;
+  font-size: 14px / $font-size * 1em;
+  line-height: 17.5px / 14px * 1em;
+  margin: 0;
+  color: #000;
+  transition: color .25s linear;
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: color .25s linear;
+    &:hover {
+      color: $color-red
+    }
+  }
+}
+.header-info-item__title {
+  font-weight: 700;
+  margin-bottom: 2px / $font-size * 1em;
+  transition: color .25s linear;
+  cursor: default;
+  &:hover {
+    color: $color-red
+  }
+}

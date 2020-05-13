@@ -1,30 +1,38 @@
 <template>
   <header class="header" ref="header">
-    <div class="container">
-      <div class="row justify-space-between align-items-center">
-        <div class="col-lg-3">
-          <router-link :to="{ path: '/' }" class="header-logo">
-            <img src="~/assets/images/sts-logo.png" alt="" />
-          </router-link>
-        </div>
-        <div class="col-xl-1 d-none d-xl-block"></div>
-        <div class="col-lg-20">
-          <HeaderRight/>
-        </div>
-      </div>
-    </div>
+    {{/*
+    Header top
+    --
+    Выбор языка
+    Попап авторизации и регистрации
+    Попап сравнений
+    */}}
+    <HeaderTop/>
+    {{/* Header top - END */}}
+
+    {{/* Header middle */}}
+    <HeaderMiddle/>
+    {{/* Header middle - END */}}
+
+    {{/* Header bottom */}}
+    <HeaderBottom/>
+    {{/* Header bottom - END */}}
   </header>
 </template>
 
 <script>
-import "./index.scss";
+    import "./index.scss";
 
-import HeaderRight from "./components/HeaderRight/HeaderRight";
+    import HeaderTop from "./components/HeaderTop/HeaderTop";
+    import HeaderMiddle from "./components/HeaderMiddle/HeaderMiddle";
+    import HeaderBottom from "./components/HeaderBottom/HeaderBottom";
 
-export default {
-  name: "Header",
-  components: {
-    HeaderRight,
-  }
-};
+    export default {
+        name: "Header",
+        components: {
+            HeaderTop,
+            HeaderMiddle,
+            HeaderBottom
+        }
+    };
 </script>

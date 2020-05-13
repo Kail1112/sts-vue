@@ -1,7 +1,7 @@
 <template>
   <div class="popup-top" ref="popup-top">
     {{/* back btn */}}
-    <button v-if="hasCloseBtn" class="popup-top__left" @click="goBack">
+    <button v-if="hasBackBtn" class="popup-top__left" @click="goBack">
       <span class="sts-icon sts-iconarrow-left"></span>
     </button>
     {{/* back btn - END */}}
@@ -11,7 +11,7 @@
     {{/* title - END */}}
 
     {{/* close popup */}}
-    <button v-if="hasBackBtn" class="popup-top__right" @click="closePopUp">
+    <button v-if="hasCloseBtn" class="popup-top__right" @click="closePopUp">
       <span class="sts-icon sts-iconclose"></span>
     </button>
     {{/* close popup - END */}}
@@ -32,9 +32,7 @@
         },
         methods: {
             /// goBack - вернуться обратно
-            goBack () {
-                this.$props.backBtnFunction()
-            },
+            goBack () { this.$props.backBtnFunction() },
             /*----------------------*/
 
             /// closePopUp - закрытие попапов

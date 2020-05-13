@@ -1,11 +1,11 @@
 <template>
-  <PopUp :keyPopUp="'user-panel'" :btn="{tagName: 'div', className: 'header-btn__user'}">
+  <PopUp :keyPopUp="'user-panel'"
+         :btn="{tagName: 'div', className: 'header-btn__user'}"
+         :function-on-open="setOverflow">
     {{/* Кнопка */}}
     <template v-slot:btn>
       <p class="text">
-        <small>
-          <button>Авторизация</button> | <button>Регистрация</button>
-        </small>
+        <button>Авторизация</button> | <button>Регистрация</button>
       </p>
       <p class="sts-icon sts-iconuser"></p>
       <p class="sts-icon sts-iconarrow-bottom"></p>
@@ -20,8 +20,11 @@
                     @enter="tabEnter">
           {{/* Таб авторизации */}}
           <div class="animation-item" v-if="activeTab === 'login'" :key="'login-tab-form'">
+            <PopUpTop :title="'Авторизация'"
+                      :has-close-btn="true"
+                      :close-btn-function="removeOverflow"/>
             <PopUpBody :scrolled="scrollBody"
-                       :moreClass="'small'">
+                       :moreClass="'small has-top'">
               <FormsLogin :has-register-btn="true"
                           :callback-click-register-btn="changeActiveTabUserPanel"/>
             </PopUpBody>
@@ -32,6 +35,7 @@
           <div class="animation-item" v-if="activeTab === 'register'" :key="'register-tab-form'">
             <PopUpTop :title="'Регистрация'"
                       :has-close-btn="true"
+                      :close-btn-function="removeOverflow"
                       :has-back-btn="true"
                       :back-btn-function="backToLogin"/>
             <PopUpBody :scrolled="scrollBody"
@@ -78,6 +82,14 @@
 
             /// backToLogin
             backToLogin () { this.activeTab !== 'login' && (this.activeTab = 'login') },
+            /*----------------------*/
+
+            /// removeOverflow
+            setOverflow () { !this.$root.$store.getters.GET_NOW_OVERFLOW && this.$root.$store.dispatch('changeOverflow', true) },
+            /*----------------------*/
+
+            /// removeOverflow
+            removeOverflow () { this.$root.$store.getters.GET_NOW_OVERFLOW && this.$root.$store.dispatch('changeOverflow', false) }
             /*----------------------*/
         },
         components: {
