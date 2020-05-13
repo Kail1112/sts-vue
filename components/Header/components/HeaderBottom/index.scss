@@ -5,3 +5,13 @@
   width: 100%;
   background-color: $color-red;
 }
+.header-bottom-wrapper {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: ($media-xxl - 1px) / $font-size * 1em) {
+  .header-bottom-wrapper {
+    font-size: 14px / $font-size * 1em;
+  }
+}

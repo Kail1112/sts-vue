@@ -63,3 +63,14 @@
     color: $color-red
   }
 }
+
+@media (max-width: ($media-xxl - 1px) / $font-size * 1em) {
+  .header-middle-info {
+    margin-left: -15px / 14px * 1em;
+    margin-right: -15px / 14px * 1em;
+  }
+  .header-middle-info__item {
+    padding-left: 15px / 14px * 1em;
+    padding-right: 15px / 14px * 1em;
+  }
+}

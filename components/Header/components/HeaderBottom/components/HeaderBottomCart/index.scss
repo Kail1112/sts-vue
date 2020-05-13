@@ -49,6 +49,7 @@
     color: #fff;
     background-color: $color-red;
     display: block;
+    margin-bottom: 0;
     position: absolute;
     top: 50%;
     right: 15px / 14px * 1em;
@@ -84,6 +85,6 @@
 }
 
 .popup-body-cart {
-  min-width: 300px / $font-size * 1em;
+  min-width: 600px / $font-size * 1em;
   max-height: calc(100vh - 285px);
 }

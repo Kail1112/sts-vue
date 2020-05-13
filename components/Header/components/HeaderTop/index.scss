@@ -106,3 +106,9 @@
     }
   }
 }
+
+@media (max-width: ($media-xxl - 1px) / $font-size * 1em) {
+  .header-top-wrapper {
+    font-size: 14px / $font-size * 1em;
+  }
+}

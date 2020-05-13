@@ -1,32 +1,34 @@
 <template>
   <div class="header-middle">
     <div class="container">
-      <div class="row justify-space-between align-items-center">
-        {{/* Лого */}}
-        <div class="col-auto">
-          <router-link :to="{ path: '/' }" class="header-logo">
-            <img src="~/assets/images/sts-logo.png" alt="" />
-          </router-link>
-        </div>
-        {{/* Лого - END */}}
+      <div class="header-middle-wrapper">
+        <div class="row justify-space-between align-items-center">
+          {{/* Лого */}}
+          <div class="col-auto">
+            <router-link :to="{ path: '/' }" class="header-logo">
+              <img src="~/assets/images/sts-logo.png" alt="" />
+            </router-link>
+          </div>
+          {{/* Лого - END */}}
 
-        {{/* Поиск в шапке */}}
-        <div class="col-auto">
-          <HeaderMiddleSearch/>
-        </div>
-        {{/* Поиск в шапке - END */}}
+          {{/* Поиск в шапке */}}
+          <div class="col-auto">
+            <HeaderMiddleSearch/>
+          </div>
+          {{/* Поиск в шапке - END */}}
 
-        {{/* Ссылки в шапке */}}
-        <div class="col-auto">
-          <HeaderMiddleLinks :links="links"/>
-        </div>
-        {{/* Ссылки в шапке - END */}}
+          {{/* Ссылки в шапке */}}
+          <div class="col-auto">
+            <HeaderMiddleLinks :links="links"/>
+          </div>
+          {{/* Ссылки в шапке - END */}}
 
-        {{/* Контакты в шапке */}}
-        <div class="col-auto">
-          <HeaderMiddleContacts :contacts="contacts"/>
+          {{/* Контакты в шапке */}}
+          <div class="col-auto">
+            <HeaderMiddleContacts :contacts="contacts"/>
+          </div>
+          {{/* Контакты в шапке - END */}}
         </div>
-        {{/* Контакты в шапке - END */}}
       </div>
     </div>
   </div>

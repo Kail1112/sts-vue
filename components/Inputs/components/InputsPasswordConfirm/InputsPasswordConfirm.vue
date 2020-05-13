@@ -13,7 +13,7 @@
         <InputsSignature v-if="signature[1] !== undefined" :signature="signature[1]"/>
       </label>
       <RadioInput :type="'checkbox'"
-                  :signature="'Показать пароль'"
+                  :signature="getTitle('form-btn-show-password')"
                   :callback="onChangeShowPassword"/>
     </div>
 </template>
@@ -44,6 +44,10 @@
             onError: { type: Function, default: () => null }
         },
         methods: {
+            /// getTitle - получение системного сообщения в зависимости от языка
+            getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
+            /*----------------------*/
+
             /// onChange - функция изменения данных в полях
             onChange ({keyValue, keyHasChange, value}) {
                 const alternativeKeyValue = keyValue === 'valueFirst' ? 'valueSecond' : 'valueFirst'

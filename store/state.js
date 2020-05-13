@@ -1,7 +1,9 @@
 import {mainState} from "./main";
+import {userState} from "./user";
 
 const includesState = () => ({
-  ...mainState
+  ...mainState,
+  ...userState
 })
 
 export default includesState

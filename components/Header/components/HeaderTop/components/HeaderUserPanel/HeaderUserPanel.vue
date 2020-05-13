@@ -5,7 +5,7 @@
     {{/* Кнопка */}}
     <template v-slot:btn>
       <p class="text">
-        <button>Авторизация</button> | <button>Регистрация</button>
+        <button>{{getTitle('form-auth')}}</button> | <button>{{getTitle('form-register')}}</button>
       </p>
       <p class="sts-icon sts-iconuser"></p>
       <p class="sts-icon sts-iconarrow-bottom"></p>
@@ -20,7 +20,7 @@
                     @enter="tabEnter">
           {{/* Таб авторизации */}}
           <div class="animation-item" v-if="activeTab === 'login'" :key="'login-tab-form'">
-            <PopUpTop :title="'Авторизация'"
+            <PopUpTop :title="getTitle('form-auth')"
                       :has-close-btn="true"
                       :close-btn-function="removeOverflow"/>
             <PopUpBody :scrolled="scrollBody"
@@ -33,7 +33,7 @@
 
           {{/* Таб регистрации */}}
           <div class="animation-item" v-if="activeTab === 'register'" :key="'register-tab-form'">
-            <PopUpTop :title="'Регистрация'"
+            <PopUpTop :title="getTitle('form-register')"
                       :has-close-btn="true"
                       :close-btn-function="removeOverflow"
                       :has-back-btn="true"
@@ -68,6 +68,10 @@
             }
         },
         methods: {
+            /// getTitle - получение системного сообщения в зависимости от языка
+            getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
+            /*----------------------*/
+
             /// tabBeforeEnter
             tabBeforeEnter () { this.scrollBody === true && (this.scrollBody = false) },
             /*----------------------*/
