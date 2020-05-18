@@ -1,0 +1,60 @@
+@import '../../assets/var';
+
+.count {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  &.small {
+    height: 18px / $font-size * 1em;
+    .count-btn {
+      width: 18px / 16px * 1em;
+      height: 18px / 16px * 1em;
+      font-size: 16px / $font-size * 1em;
+      line-height: 18px / 16px * 1em;
+      &.count-btn-minus {
+        margin-left: 5px / 16px * 1em;
+      }
+    }
+    .count-input {
+      font-size: 14px / $font-size * 1em;
+      padding: (1px / 14px * 1em) (5px / 14px * 1em);
+      max-width: 25px / 14px * 1em;
+    }
+  }
+}
+.count-btn {
+  color: #000;
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: center;
+  display: block;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  -webkit-appearance: unset;
+  border-radius: 0;
+  transition: color .25s linear;
+  &:hover {
+    color: $color-red
+  }
+}
+.count-input {
+  display: block;
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  -webkit-appearance: unset;
+  border-radius: 0;
+  text-align: center;
+  color: #000;
+}

@@ -18,6 +18,8 @@
     const findClosetNode = import('~/utils/find-closet-node.js')
     const destructParamsForResize = import('~/utils/destruct-params-for-resize.js')
 
+    import createWorker from "../utils/workers/create-worker";
+
     export default {
         name: 'main-layout',
         data () {
@@ -106,10 +108,30 @@
                         })
                     })
                 }
-
                 this.$store.watch((state) => state.overflowBody, this.setPaddingForMain)
             })
             /* Запуск эвентов - end */
+
+            /* Worker для чека изменений в корзине */
+            if (window) {
+                  const func = (self, start) => {
+                      console.log(self, start)
+                      if (start) {
+                          // Если нужно запустить воркер
+                          self.postMessage(1)
+                      } else {
+                          // Если нужно закрыть worker
+                      }
+                  }
+                  const worker = createWorker(func, window) // Инициализация воркера
+                  if (worker !== undefined) {
+                      worker.postMessage(true) // Запуск воркера
+                      worker.onmessage = res => { // Слушаем изменения
+                          console.log(res)
+                      }
+                  }
+            }
+            /* Worker для чека изменений в корзине - END */
         }
     }
 </script>

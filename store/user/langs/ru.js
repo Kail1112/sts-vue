@@ -19,7 +19,13 @@ const ruLang = {
   'search-sub-title': 'в каталоге',
   /* Все что связано с корзиной */
   'cart-title': 'Корзина',
-  'cart-all-price-title': 'Общая сумма:'
+  'cart-all-price-title': 'Общая сумма:',
+  'cart-add-product': 'Добавить в корзину',
+  'cart-remove-product': 'Удалить из корзины',
+  /* Все что связано с сравнением */
+  'comparison-title': 'Сравнение',
+  'comparison-add-product': 'Добавить в сравнение',
+  'comparison-remove-product': 'Удалить из сравнения'
 }
 
 export default ruLang
