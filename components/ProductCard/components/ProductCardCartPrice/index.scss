@@ -1,0 +1,26 @@
+@import "../../../../assets/var";
+
+.product-cart {
+  .product-bottom {
+    display: block;
+    width: 100%;
+    //max-width: calc(100% - 140px)
+    max-width: calc(100% - 8.125em);
+    position: absolute;
+    left: 120px / $font-size * 1em;
+    top: 74px / $font-size * 1em;
+  }
+  .product-price-now {
+    margin-bottom: 0;
+    font-size: 20px / $font-size * 1em;
+  }
+}
+
+@media (max-width: 505px / $font-size * 1em) {
+  .product-cart {
+    .product-bottom {
+      top: auto;
+      bottom: 10px / $font-size * 1em
+    }
+  }
+}

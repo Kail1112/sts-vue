@@ -1,5 +1,7 @@
 const enLang = {
   'not-know': 'Unknown',
+  'show-all': 'Show all',
+  'more-details': 'More details',
   /* Все что связано с формами */
   'form-auth': 'Authorization',
   'form-register': 'Registration',

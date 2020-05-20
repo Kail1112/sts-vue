@@ -1,6 +1,6 @@
 <template>
   <div class="normal-block">
-    <div class="normal-block margin-top margin-bottom">
+    <div class="normal-block margin-bottom">
       <h2>Checkbox <code><{{"RadioInput type='checkbox'"}}/></code></h2>
       <h3>вариант №1</h3>
       <hr/>

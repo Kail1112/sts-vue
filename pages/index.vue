@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <DemonstrationCardProduct/>
+    <DemonstrationCardProduct2/>
     <DemonstrationInputsRadio/>
     <DemonstrationCheckbox/>
     <DemonstrationInputsFields/>
@@ -16,6 +17,7 @@
   import DemonstrationTypography from "../demonstration/DemonstrationTypography";
   import DemonstrationBtns from "../demonstration/DemonstrationBtns";
   import DemonstrationCardProduct from "../demonstration/DemonstrationCardProduct";
+  import DemonstrationCardProduct2 from "../demonstration/DemonstrationCardProduct2";
 
   export default {
       name: 'index',
@@ -25,7 +27,8 @@
           DemonstrationInputsFields,
           DemonstrationTypography,
           DemonstrationBtns,
-          DemonstrationCardProduct
+          DemonstrationCardProduct,
+          DemonstrationCardProduct2
       }
   }
 </script>

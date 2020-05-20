@@ -1,5 +1,7 @@
 const ruLang = {
   'not-know': 'Неизвестно',
+  'show-all': 'Показать все',
+  'more-details': 'Подробнее',
   /* Все что связано с формами */
   'form-auth': 'Авторизация',
   'form-register': 'Регистрация',

@@ -6,6 +6,7 @@ export const userState = {
     ru: {...ruLang},
     en: {...enLang}
   },
+  activeComponents: {}, // Есть ли активность в компонентах
   cart: {},
   comparison: {}
 }
@@ -49,6 +50,10 @@ export const userGetters = {
 
   /// CHECK_PRODUCT_IN_COMPARISON - проверка наличия продукта в сравнении
   CHECK_PRODUCT_IN_COMPARISON: state => (id = -1) => Number.isInteger(id * 1) && state.comparison.hasOwnProperty(id * 1),
+  /*----------------------*/
+
+  /// CHECK_ACTIVE_COMPONENT - проверка активности компонента
+  CHECK_ACTIVE_COMPONENT: state => (id = '') => id !== '' ? (state.activeComponents.hasOwnProperty(id) && state.activeComponents[id]) : false,
   /*----------------------*/
 }
 
@@ -123,6 +128,16 @@ export const userMutations = {
     }
   },
   /*----------------------*/
+
+  /// setActiveComponent - Установка активности для компонента
+  setActiveComponent (state, param = { id = '', active = false } = {id: '', active: false}) {
+    const {id, active} = param
+    let cloneState = {...state.activeComponents}
+    cloneState.hasOwnProperty(id) && (delete cloneState[id])
+    active && (cloneState[id] = active)
+    state.activeComponents = cloneState
+  },
+  /*----------------------*/
 }
 
 export const userActions = {
@@ -144,5 +159,9 @@ export const userActions = {
 
   /// removeFromComparison - удаление из сравнения
   removeFromComparison (context, param) { context.commit('removeFromComparison', param) },
+  /*----------------------*/
+
+  /// setActiveComponent - Установка активности для компонента
+  setActiveComponent (context, param) { context.commit('setActiveComponent', param) },
   /*----------------------*/
 }

@@ -15,16 +15,28 @@
         name: "Count",
         data () {
             return {
-                val: this.$props.startValue
+                val: this.$props.startValue,
+                forcibly: false, // Нужно ли применить изменение без задержки
             }
         },
         watch: {
             /// val
-            val (value) { Number.isInteger(value * 1) && this.$props.callback(value * 1) },
+            val (value) {
+                if (Number.isInteger(value * 1)) {
+                    const {forcibly} = this
+                    this.$props.callback(value * 1, !forcibly)
+                    this.forcibly && (this.forcibly = false)
+                }
+            },
             /*----------------------*/
 
             /// startValue
-            startValue (value) { (Number.isInteger(value * 1) && this.val !== value * 1) && (this.val = value * 1) }
+            startValue (value) {
+                if (Number.isInteger(value * 1) && this.val !== value * 1) {
+                    !this.forcibly && (this.forcibly = true)
+                    this.val = value * 1
+                }
+            }
             /*----------------------*/
         },
         props: {
