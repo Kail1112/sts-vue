@@ -85,6 +85,9 @@
 }
 
 .popup-body-cart {
-  min-width: 600px / $font-size * 1em;
+  min-width: 550px / $font-size * 1em;
   max-height: calc(100vh - 285px);
+  &.empty {
+    min-width: 300px / $font-size * 1em;
+  }
 }

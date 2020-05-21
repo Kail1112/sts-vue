@@ -177,24 +177,6 @@ p {
   }
 }
 
-.not-found {
-  display: block;
-  width: 100%;
-  h2 {
-    width: 100%;
-    text-align: center;
-    font-size: 66px / $font-size * 1em;
-    color: $color-red;
-    font-weight: 700;
-    margin-bottom: 5px / 66px * 1em;
-    font-style: italic;
-  }
-  h3 {
-    width: 100%;
-    text-align: center;
-  }
-}
-
 .content-page {
   display: block;
   width: 100%;
@@ -273,3 +255,4 @@ p {
 
 @import "./css/01.typography";
 @import "./css/02.grid";
+@import "./css/03.errors";

@@ -12,13 +12,13 @@
     export default {
         name: "ProductCardCartPrice",
         props: {
-            id: { type: Number, default: -1 },
-            count: { type: Number, default: 0 },
-            price: { type: Number, default: 0 }
+            id: { type: Number, default: -1 }
         },
         computed: {
             /// totalPrice - цена
-            totalPrice () { return this.$props.count * this.$props.price },
+            totalPrice () {
+                return Number.isInteger(this.$props.id * 1) && (this.$props.id * 1) > -1 ? this.$root.$store.getters.GET_TOTAL_PRICE_PRODUCT_CART(this.$props.id * 1) : 0
+            },
             /*----------------------*/
         }
     }

@@ -1,4 +1,5 @@
-import {ruLang, enLang} from './langs/'
+import {ruLang, enLang} from './langs/';
+import {userCartState, userCartGetters, userCartMutations, userCartActions} from './cart';
 
 export const userState = {
   lang: 'ru',
@@ -7,7 +8,7 @@ export const userState = {
     en: {...enLang}
   },
   activeComponents: {}, // Есть ли активность в компонентах
-  cart: {},
+  ...userCartState, /// корзина
   comparison: {}
 }
 
@@ -40,12 +41,8 @@ export const userGetters = {
   HAS_LANGUAGE: state => (lang) => state.systemMessage.hasOwnProperty(lang),
   /*----------------------*/
 
-  /// CHECK_PRODUCT_IN_CART - проверка наличия продукта в корзине
-  CHECK_PRODUCT_IN_CART: state => (id = -1) => Number.isInteger(id * 1) && state.cart.hasOwnProperty(id * 1),
-  /*----------------------*/
-
-  /// GET_COUNT_IN_CART - получение кол-ва товара в корзине
-  GET_COUNT_IN_CART: state => (id = -1) => Number.isInteger(id * 1) && state.cart.hasOwnProperty(id * 1) ? state.cart[id * 1] : -1,
+  /// ---------------------------
+  ...userCartGetters, /// корзина
   /*----------------------*/
 
   /// CHECK_PRODUCT_IN_COMPARISON - проверка наличия продукта в сравнении
@@ -62,40 +59,8 @@ export const userMutations = {
   changeLang (state, lang) { state.systemMessage.hasOwnProperty(lang) && (state.lang = lang) },
   /*----------------------*/
 
-  /// changeCart - изменение корзины
-  changeCart (state, param = {id=  -1, count = 1, callback = () => null} = {id: -1, count: 1, callback: () => null}) {
-    const {id, count, callback} = param
-    const clearId = id * 1
-    const clearCount = count * 1
-    if (Number.isInteger(clearId) && clearId !== -1 && Number.isInteger(clearCount) && clearCount > 0) {
-      const template = {}
-      template[clearId] = clearCount
-      if (!state.cart.hasOwnProperty(clearId)) {
-        state.cart = {...state.cart, ...template}
-      } else {
-        if (state.cart[id] !== clearCount) {
-          delete state.cart[clearId]
-          state.cart = {...state.cart, ...template}
-        }
-      }
-      callback()
-    }
-  },
-  /*----------------------*/
-
-  /// removeFromCart - удаление из корзины
-  removeFromCart (state, param = {id = -1, callback = () => null} = {id: -1, callback: () => null}) {
-    const {id, callback} = param
-    if (id !== -1) {
-      const clearId = id * 1
-      if (Number.isInteger(clearId) && state.cart.hasOwnProperty(clearId)) {
-        let cloneState = {...state.cart}
-        delete cloneState[clearId]
-        state.cart = cloneState
-        callback()
-      }
-    }
-  },
+  /// ---------------------------
+  ...userCartMutations, /// корзина
   /*----------------------*/
 
   /// addToComparison - добавление в сравнения
@@ -136,6 +101,7 @@ export const userMutations = {
     cloneState.hasOwnProperty(id) && (delete cloneState[id])
     active && (cloneState[id] = active)
     state.activeComponents = cloneState
+    console.log(state.activeComponents)
   },
   /*----------------------*/
 }
@@ -145,12 +111,8 @@ export const userActions = {
   changeLang (context, lang) { context.commit('changeLang', lang) },
   /*----------------------*/
 
-  /// changeCart - изменение корзины
-  changeCart (context, param) { context.commit('changeCart', param) },
-  /*----------------------*/
-
-  /// removeFromCart - удаление из корзины
-  removeFromCart (context, param) { context.commit('removeFromCart', param) },
+  /// ---------------------------
+  ...userCartActions, /// корзина
   /*----------------------*/
 
   /// addToComparison - добавление в сравнения

@@ -17,8 +17,21 @@
         <PopUpTop :title="getTitle('cart-title')"
                   :has-close-btn="true"
                   :close-btn-function="removeOverflow"/>
-        <PopUpBody :moreClass="'popup-body-cart'">
-          <p>Test</p>
+        <PopUpBody :moreClass="productsFromCart.length === 0 ? 'popup-body-cart empty' : 'popup-body-cart'">
+          <template v-if="productsFromCart.length === 0">
+            <div class="cart-empty">
+              <p class="sts-icon sts-iconshopping-cart"></p>
+              <h3>Корзина пустая</h3>
+            </div>
+          </template>
+          <ProductCard v-else v-for="(product, index) in productsFromCart"
+                       :key="`popup-cart-product-${index}`"
+                       :id="product.id"
+                       :link="product.link"
+                       :name="product.name"
+                       :image="product.image"
+                       :more-class="'product-cart'"
+                       :cart="true"/>
         </PopUpBody>
       </PopUpHolder>
     </template>
@@ -37,6 +50,11 @@
 
     export default {
         name: "HeaderBottomCart",
+        computed: {
+            /// productsFromCart - массив продуктов из корзины
+            productsFromCart () { return this.$root.$store.getters.GET_PRODUCTS_FROM_CART },
+            /*----------------------*/
+        },
         methods: {
             /// getTitle - получение системного сообщения в зависимости от языка
             getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
