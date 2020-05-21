@@ -17,7 +17,7 @@
                     :checked="value.checkbox[name] !== undefined"
                     :signature="valueItem"
                     :name="name"
-                    :more-class="index === values.length - 1 ? 'last' : ''"
+                    :more-class="index === values.length - 1 | classForOtherTypeOption('input-checkbox')"
                     :callback="() => selectOption(type, valueItem, name)"/>
         {{/* отображение в виде checkbox - END */}}
 
@@ -27,7 +27,7 @@
                     :checked="value.radio === valueItem"
                     :signature="valueItem"
                     :name="name"
-                    :more-class="index === values.length - 1 ? 'last' : ''"
+                    :more-class="index === values.length - 1 | classForOtherTypeOption('input-radio')"
                     :callback="() => selectOption(type, valueItem, name)"/>
         {{/* отображение в виде radio - END */}}
       </li>
@@ -93,7 +93,11 @@
     },
     filters: {
       /// classForNormalOption - установка списка классов для обычного отображения
-      classForNormalOption: (lastIndex, active) => `select-normal${lastIndex ? ' last' : ''}${active ? ' active' : ''}`,
+      classForNormalOption: (lastIndex = false, active = false) => `select-normal${lastIndex ? ' last' : ''}${active ? ' active' : ''}`,
+      /*----------------------*/
+
+      /// classForOtherTypeOption - установка списка классов для остальных типов отображения
+      classForOtherTypeOption: (last = false, classList = '') => `${classList}${last ? ' last' : ''}`,
       /*----------------------*/
     },
     components: {

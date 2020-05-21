@@ -1,0 +1,51 @@
+@import "../../assets/var";
+
+/*
+* Второй вариант отображения ( checkbox )
+*/
+
+.switch-input {
+  &.input-radio {
+    input {
+      &:checked {
+        & ~ .switch-input__indicator {
+          background-color: #fff;
+          border-color: $color-red;
+          .switch-input__dot {
+            background-color: $color-red;
+            opacity: 1;
+            left: 3px / $font-size * 1em;
+          }
+        }
+      }
+    }
+    .switch-input__indicator {
+      margin-right: 5px / $font-size * 1em;
+      width: 16px / $font-size * 1em;
+      border-radius: 0;
+      background-color: #fff;
+      border: 1px solid $color-gray-dark;
+      transition: box-shadow .25s linear, border-color .25s linear;
+    }
+    .switch-input__dot {
+      top: 3px / $font-size * 1em;
+      right: 3px / $font-size * 1em;
+      bottom: 3px / $font-size * 1em;
+      left: 3px / $font-size * 1em;
+      height: auto;
+      width: auto;
+      border-radius: 0;
+      background-color: #000;
+      opacity: 0;
+      transition: background-color .25s linear, opacity .25s linear;
+    }
+    &:hover {
+      .switch-input__indicator {
+        .switch-input__dot {
+          background-color: #000;
+          opacity: 0.35;
+        }
+      }
+    }
+  }
+}

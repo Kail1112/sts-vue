@@ -1,0 +1,71 @@
+@import "../../assets/var";
+
+/*
+* Второй вариант отображения ( checkbox )
+*/
+
+.switch-input {
+  &.input-checkbox {
+    input {
+      &:checked {
+        & ~ .switch-input__indicator {
+          background-color: #fff;
+          border-color: $color-red;
+          .switch-input__dot {
+            background-color: transparent;
+            left: 50%;
+            &:before {
+              opacity: 1;
+              color: $color-red
+            }
+          }
+        }
+      }
+    }
+    .switch-input__indicator {
+      margin-right: 5px / $font-size * 1em;
+      width: 16px / $font-size * 1em;
+      border-radius: 0;
+      background-color: #fff;
+      border: 1px solid $color-gray-dark;
+      transition: box-shadow .25s linear, border-color .25s linear;
+    }
+    .switch-input__dot {
+      transform: translate(-50%, -50%);
+      left: 50%;
+      right: auto;
+      top: 50%;
+      height: auto;
+      width: auto;
+      border-radius: 0;
+      background-color: transparent;
+      transition: background-color .25s linear, left .25s linear;
+      &:before {
+        font-family: 'sts' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\e904";
+        font-size: 7px / $font-size * 1em;
+        opacity: 0;
+        color: #000;
+        transition: opacity .25s linear, color .25s linear;
+      }
+    }
+    &:hover {
+      .switch-input__indicator {
+        .switch-input__dot {
+          background-color: transparent;
+          &:before {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}

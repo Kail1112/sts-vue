@@ -33,6 +33,7 @@
   import SelectDrop from "./components/SelectDrop/SelectDrop";
 
   import objForEach from "../../utils/object-for-each";
+  import destructStateSelect from "../../utils/destruct-state-select";
 
   export default {
     name: "Select",
@@ -82,30 +83,13 @@
 
       /// destructValue - получение всех выбранных значений
       destructValue () {
-        let result = ''
-        objForEach(this.value, (item, key) => {
-          if (key === 'normal' || key === 'radio') {
-            if (item !== '') {
-              result += result === '' ? item : `, ${item}`
-            }
-          } else {
-            objForEach(item, (el) => result += result === '' ? el : `, ${el}`)
-          }
-        })
-        return result
+        return destructStateSelect(this.value)
       },
       /*----------------------*/
 
       /// hasSelectedValue - есть ли выбранные элементы
       hasSelectedValue () {
-        let result = 0
-        objForEach(this.value, (item, key) => {
-          if (key === 'normal' || key === 'radio')
-            item !== '' && (result++)
-          else
-            objForEach(item, (el) => result += el !== '' ? 1 : 0)
-        })
-        return !!result
+        return destructStateSelect(this.value) !== ''
       },
       /*----------------------*/
     },
