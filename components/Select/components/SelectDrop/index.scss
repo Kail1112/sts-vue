@@ -1,0 +1,58 @@
+@import "../../../../assets/var";
+
+.select-drop {
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px / $font-size * 1em;
+  transform: translateY(100%);
+  background-color: #fff;
+  box-shadow: $default-box-shadow;
+  padding: 15px / $font-size * 1em;
+  max-height: 300px / $font-size * 1em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    li {
+      display: block;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      list-style: none;
+      line-height: 0;
+      .switch-input {
+        margin-bottom: 10px / 14px * 1em;
+        &.last {
+          margin-bottom: 0;
+        }
+        &:hover, &.active {
+          color: $color-red
+        }
+      }
+    }
+  }
+}
+.select-normal {
+  font-size: 14px / $font-size * 1em;
+  line-height: 17.5px / 14px * 1em;
+  color: #000;
+  cursor: pointer;
+  transition: color .25s linear;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 10px / 14px * 1em;
+  &.last {
+    margin-bottom: 0;
+  }
+  &:hover, &.active {
+    color: $color-red
+  }
+}

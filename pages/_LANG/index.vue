@@ -1,16 +1,22 @@
 <template>
   <div class="container">
+    <router-link :to="{ path: '/' }">ru</router-link>
     <DemonstrationCardProduct/>
   </div>
 </template>
 
 <script>
-    import DemonstrationCardProduct from "../../demonstration/DemonstrationCardProduct";
+  import asyncMain from "../../service/asyncMain";
 
-    export default {
-        name: "index",
-        components: {
-            DemonstrationCardProduct
-        }
+  import DemonstrationCardProduct from "../../demonstration/DemonstrationCardProduct";
+
+  export default {
+    name: "index",
+    async asyncData (app) {
+      await asyncMain(app)
+    },
+    components: {
+      DemonstrationCardProduct
     }
+  }
 </script>

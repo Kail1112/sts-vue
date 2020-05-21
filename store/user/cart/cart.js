@@ -27,6 +27,22 @@ export const userCartGetters = {
     return arr
   },
   /*----------------------*/
+
+  /// GET_ALL_COUNT_PRODUCTS_IN_CART - получение кол-ва для всех товаров
+  GET_ALL_COUNT_PRODUCTS_IN_CART: state => {
+    let result = 0
+    objForEach(state.cart, ({count}) => result += count)
+    return result
+  },
+  /*----------------------*/
+
+  /// GET_ALL_PRICE_CART - получение стоимости всех товаров в корзине
+  GET_ALL_PRICE_CART: state => {
+    let result = 0
+    objForEach(state.cart, ({count, price}) => result += count * price)
+    return result
+  },
+  /*----------------------*/
 }
 
 export const userCartMutations = {

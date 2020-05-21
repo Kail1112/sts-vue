@@ -6,8 +6,13 @@
     <template v-slot:btn>
       <p class="sts-icon sts-iconshopping-cart"></p>
       <p class="text">{{getTitle('cart-title')}}</p>
-      <p class="text">{{getTitle('cart-all-price-title')}} <b>2 000 000</b> сум</p>
-      <p class="counter"><span>99+</span></p>
+      <p v-if="allPriceCart > 0" class="text" :title="`${getTitle('cart-all-price-title')} ${allPriceCart} сум`">
+        {{getTitle('cart-all-price-title')}} <b>{{allPriceCart | spaceBetweenNumber}}</b> сум
+      </p>
+      <p v-else class="text">
+        {{getTitle('cart-empty')}}
+      </p>
+      <p v-if="countProductInCart !== '0'" class="counter"><span>{{countProductInCart}}</span></p>
     </template>
     {{/* Кнопка - END */}}
 
@@ -21,7 +26,7 @@
           <template v-if="productsFromCart.length === 0">
             <div class="cart-empty">
               <p class="sts-icon sts-iconshopping-cart"></p>
-              <h3>Корзина пустая</h3>
+              <h3>{{getTitle('cart-empty')}}</h3>
             </div>
           </template>
           <ProductCard v-else v-for="(product, index) in productsFromCart"
@@ -40,40 +45,53 @@
 </template>
 
 <script>
-    import './index.scss';
+  import './index.scss';
 
-    import PopUp from "../../../../../PopUp/PopUp";
-    import PopUpHolder from "../../../../../PopUp/components/PopUpHolder/PopUpHolder";
-    import PopUpBody from "../../../../../PopUp/components/PopUpBody/PopUpBody";
-    import PopUpTop from "../../../../../PopUp/components/PopUpTop/PopUpTop";
-    import ProductCard from "../../../../../ProductCard/ProductCard";
+  import PopUp from "../../../../../PopUp/PopUp";
+  import PopUpHolder from "../../../../../PopUp/components/PopUpHolder/PopUpHolder";
+  import PopUpBody from "../../../../../PopUp/components/PopUpBody/PopUpBody";
+  import PopUpTop from "../../../../../PopUp/components/PopUpTop/PopUpTop";
+  import ProductCard from "../../../../../ProductCard/ProductCard";
 
-    export default {
-        name: "HeaderBottomCart",
-        computed: {
-            /// productsFromCart - массив продуктов из корзины
-            productsFromCart () { return this.$root.$store.getters.GET_PRODUCTS_FROM_CART },
-            /*----------------------*/
-        },
-        methods: {
-            /// getTitle - получение системного сообщения в зависимости от языка
-            getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
-            /*----------------------*/
+  export default {
+    name: "HeaderBottomCart",
+    computed: {
+      /// productsFromCart - массив продуктов из корзины
+      productsFromCart () { return this.$root.$store.getters.GET_PRODUCTS_FROM_CART },
+      /*----------------------*/
 
-            /// removeOverflow
-            setOverflow () { !this.$root.$store.getters.GET_NOW_OVERFLOW && this.$root.$store.dispatch('changeOverflow', true) },
-            /*----------------------*/
+      /// countProductInCart - общее кол-во продуктов в корзине
+      countProductInCart () {
+        const result = this.$root.$store.getters.GET_ALL_COUNT_PRODUCTS_IN_CART
+        return result > 99 ? '99+' : result + ''
+      },
+      /*----------------------*/
 
-            /// removeOverflow
-            removeOverflow () { this.$root.$store.getters.GET_NOW_OVERFLOW && this.$root.$store.dispatch('changeOverflow', false) }
-            /*----------------------*/
-        },
-        components: {
-            PopUp,
-            PopUpHolder,
-            PopUpBody,
-            PopUpTop,
-            ProductCard
-        }
+      /// allPriceCart - стоимсть всех товаров в корзине
+      allPriceCart () {
+        return this.$root.$store.getters.GET_ALL_PRICE_CART
+      },
+      /*----------------------*/
+    },
+    methods: {
+      /// getTitle - получение системного сообщения в зависимости от языка
+      getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
+      /*----------------------*/
+
+      /// removeOverflow
+      setOverflow () { !this.$root.$store.getters.GET_NOW_OVERFLOW && this.$root.$store.dispatch('changeOverflow', true) },
+      /*----------------------*/
+
+      /// removeOverflow
+      removeOverflow () { this.$root.$store.getters.GET_NOW_OVERFLOW && this.$root.$store.dispatch('changeOverflow', false) }
+      /*----------------------*/
+    },
+    components: {
+      PopUp,
+      PopUpHolder,
+      PopUpBody,
+      PopUpTop,
+      ProductCard
     }
+  }
 </script>

@@ -21,13 +21,18 @@ const enLang = {
   'search-sub-title': 'in the directory',
   /* Все что связано с корзиной */
   'cart-title': 'Cart',
+  'cart-empty': 'Cart is empty',
   'cart-all-price-title': 'Total amount:',
   'cart-add-product': 'Add to Cart',
   'cart-remove-product': 'Remove from cart',
   /* Все что связано с сравнением */
   'comparison-title': 'comparison',
   'comparison-add-product': 'Add to comparison',
-  'comparison-remove-product': 'Remove from comparison'
+  'comparison-remove-product': 'Remove from comparison',
+  /* Все что связано с каталогом */
+  'catalog-title': 'Catalog',
+  'catalog-category': 'Categories',
+  'catalog-header-btn': 'List of categories',
 }
 
 export default enLang

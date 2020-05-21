@@ -101,7 +101,6 @@ export const userMutations = {
     cloneState.hasOwnProperty(id) && (delete cloneState[id])
     active && (cloneState[id] = active)
     state.activeComponents = cloneState
-    console.log(state.activeComponents)
   },
   /*----------------------*/
 }

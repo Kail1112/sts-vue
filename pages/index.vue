@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <router-link :to="{ path: '/en' }">en</router-link>
     <DemonstrationCardProduct/>
     <DemonstrationCardProduct2/>
     <DemonstrationInputsRadio/>
@@ -11,6 +12,8 @@
 </template>
 
 <script>
+  import asyncMain from "../service/asyncMain";
+
   import DemonstrationInputsRadio from "../demonstration/DemonstrationInputsRadio";
   import DemonstrationCheckbox from "../demonstration/DemonstrationCheckbox";
   import DemonstrationInputsFields from "../demonstration/DemonstrationInputsFields";
@@ -20,15 +23,18 @@
   import DemonstrationCardProduct2 from "../demonstration/DemonstrationCardProduct2";
 
   export default {
-      name: 'index',
-      components: {
-          DemonstrationInputsRadio,
-          DemonstrationCheckbox,
-          DemonstrationInputsFields,
-          DemonstrationTypography,
-          DemonstrationBtns,
-          DemonstrationCardProduct,
-          DemonstrationCardProduct2
-      }
+    name: 'index',
+    async asyncData (app) {
+      await asyncMain(app)
+    },
+    components: {
+      DemonstrationInputsRadio,
+      DemonstrationCheckbox,
+      DemonstrationInputsFields,
+      DemonstrationTypography,
+      DemonstrationBtns,
+      DemonstrationCardProduct,
+      DemonstrationCardProduct2
+    }
   }
 </script>

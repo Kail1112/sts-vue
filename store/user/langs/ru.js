@@ -21,13 +21,18 @@ const ruLang = {
   'search-sub-title': 'в каталоге',
   /* Все что связано с корзиной */
   'cart-title': 'Корзина',
+  'cart-empty': 'Корзина пустая',
   'cart-all-price-title': 'Общая сумма:',
   'cart-add-product': 'Добавить в корзину',
   'cart-remove-product': 'Удалить из корзины',
   /* Все что связано с сравнением */
   'comparison-title': 'Сравнение',
   'comparison-add-product': 'Добавить в сравнение',
-  'comparison-remove-product': 'Удалить из сравнения'
+  'comparison-remove-product': 'Удалить из сравнения',
+  /* Все что связано с каталогом */
+  'catalog-title': 'Каталог',
+  'catalog-category': 'Категории',
+  'catalog-header-btn': 'Список категорий',
 }
 
 export default ruLang

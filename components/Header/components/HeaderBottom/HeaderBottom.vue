@@ -3,11 +3,17 @@
     <div class="container">
       <div class="header-bottom-wrapper">
         <div class="row justify-space-between align-items-center">
-          <div class="col-xxl-5 col-xl-6"></div>
-          <div class="col-xxl-14 col-xl-12"></div>
+          {{/* catalog */}}
+          <div class="col-xxl-5 col-xl-6">
+            <HeaderBottomCatalog/>
+          </div>
+          {{/* catalog - END */}}
+
+          {{/* cart */}}
           <div class="col-xxl-5 col-xl-6">
             <HeaderBottomCart/>
           </div>
+          {{/* cart - END */}}
         </div>
       </div>
     </div>
@@ -15,14 +21,16 @@
 </template>
 
 <script>
-    import './index.scss';
+  import './index.scss';
 
-    import HeaderBottomCart from "./components/HeaderBottomCart/HeaderBottomCart";
+  import HeaderBottomCatalog from "./components/HeaderBottomCatalog/HeaderBottomCatalog";
+  import HeaderBottomCart from "./components/HeaderBottomCart/HeaderBottomCart";
 
-    export default {
-        name: "HeaderBottom",
-        components: {
-            HeaderBottomCart
-        }
+  export default {
+    name: "HeaderBottom",
+    components: {
+      HeaderBottomCatalog,
+      HeaderBottomCart
     }
+  }
 </script>

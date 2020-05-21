@@ -1,5 +1,5 @@
 <template>
-  <label class="switch-input">
+  <label :class="moreClass | moreClass">
     <input :type="type"
            :checked="checked"
            :name="name"
@@ -21,12 +21,16 @@
       checked: { type: Boolean, default: false },
       signature: { type: String, default: '' },
       name: { type: String, default: '' },
+      moreClass: { type: String, default: '' },
       callback: { type: Function, default: () => null }
     },
     methods: {
       change (e) {
         this.$props.callback(e.target.checked)
       }
+    },
+    filters: {
+      moreClass: state => state !== '' ? `switch-input ${state}` : 'switch-input',
     },
     components: {
       RadioInputSignature
