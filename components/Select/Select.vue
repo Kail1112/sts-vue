@@ -1,5 +1,5 @@
 <template>
-  <div :class="error | stateClass(hasSelectedValue, dropIsOpened)">
+  <div :class="error | stateClass(hasSelectedValue, dropIsOpened, moreClass)">
     <div class="select-holder">
       {{/* now selected */}}
       <p class="select-text"
@@ -9,7 +9,7 @@
 
       {{/* placeholder */}}
       <p class="select-placeholder"
-         @click="openDrop">{{placeholder}}</p>
+         @click="openDrop" v-html="placeholder"></p>
       {{/* placeholder - END */}}
 
       {{/* arrow */}}
@@ -21,6 +21,7 @@
       <SelectDrop :open="isOpen"
                   :values="values"
                   :start-value="startValue"
+                  :close-on-close="closeOnClose"
                   :callback="callbackForDrop"/>
       {{/* drop down - END */}}
     </div>
@@ -46,6 +47,7 @@
         },
         selected: false,
         error: false,
+        workCallback: false,
 
         dropIsOpened: false
       }
@@ -61,7 +63,11 @@
             objForEach(item, (el) => el !== '' ? result.push(el) : undefined)
           }
         })
-        this.$props.callback({type: 'change', val: result})
+        if (this.workCallback || this.$props.initOnStart) {
+          this.$props.callback({type: 'change', val: result})
+        } else {
+          !this.workCallback && (this.workCallback = true)
+        }
       },
       /*----------------------*/
     },
@@ -70,6 +76,9 @@
       placeholder: { type: String, default: '' },
       values: { type: Array, default: () => [] },
       startValue: { type: Number, default: -1 },
+      moreClass: { type: String, default: '' },
+      closeOnClose: { type: Boolean, default: false },
+      initOnStart: { type: Boolean, default: false },
       callback: { type: Function, default: () => null }
     },
     computed: {
@@ -118,7 +127,7 @@
     },
     filters: {
       /// stateClass
-      stateClass: (error, selected, dropIsOpened) => `select${error ? ' error' : (selected ? (dropIsOpened ? ' open val'  : ' val') : (dropIsOpened ? ' open' : ''))}`,
+      stateClass: (error, selected, dropIsOpened, moreClass) => `${moreClass !== '' ? `${moreClass} ` : ''}select${error ? ' error' : (selected ? (dropIsOpened ? ' open val'  : ' val') : (dropIsOpened ? ' open' : ''))}`,
       /*----------------------*/
     },
     components: {

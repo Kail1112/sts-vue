@@ -2,6 +2,8 @@ const ruLang = {
   'not-know': 'Неизвестно',
   'show-all': 'Показать все',
   'more-details': 'Подробнее',
+  'russian': 'Русский',
+  'english': 'Английский',
   /* Все что связано с формами */
   'form-auth': 'Авторизация',
   'form-register': 'Регистрация',

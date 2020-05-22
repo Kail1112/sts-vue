@@ -1,0 +1,60 @@
+@import "../../assets/var";
+
+/*
+* Вариант отображения: simple
+*/
+
+.select {
+  &.select-simple {
+    .select-holder {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 0;
+      .sts-icon {
+        &.sts-iconarrow-bottom {
+          cursor: pointer;
+          top: 14.5px / 4px * 1em;
+          right: 4px / 4px * 1em
+        }
+      }
+    }
+    .select-placeholder {
+      //font-size: 12px / $font-size * 1em;
+      margin-right: 10px / 12px * 1em;
+      order: 1;
+      flex-grow: 1;
+      margin-bottom: 0;
+      position: static;
+      top: 0;
+      left: 0;
+      padding: 0;
+      max-width: 100%;
+      text-overflow: unset;
+      overflow: auto;
+      white-space: pre-wrap;
+      cursor: pointer;
+    }
+    .select-text {
+      order: 2;
+      height: auto;
+      width: auto;
+      min-width: auto;
+      flex-grow: 2;
+      border-color: transparent;
+      padding: (8px / 12px * 1em) (16px / 12px * 1em) (8px / 12px * 1em) (12px / 12px * 1em);
+      color: #000;
+      cursor: pointer;
+    }
+    &.error {
+      .select-text {
+        border-color: transparent;
+      }
+      .select-placeholder {
+        color: #000
+      }
+    }
+  }
+}

@@ -10,6 +10,11 @@
   left: 0;
   top: 0;
   z-index: 56;
+  .select {
+    &.select-simple {
+      margin-bottom: 0;
+    }
+  }
 }
 .header-btn {
   font-size: 15px / $font-size * 1em;

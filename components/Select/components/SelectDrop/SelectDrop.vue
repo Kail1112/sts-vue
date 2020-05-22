@@ -55,6 +55,7 @@
       open: { type: Boolean, default: false }, // открыт ли dropdown
       values: { type: Array, default: () => [] }, // значения
       startValue: { type: Number, default: -1 },
+      closeOnClose: { type: Boolean, default: false },
       callback: { type: Function, default: () => null }
     },
     methods: {
@@ -87,6 +88,9 @@
           }
           this.value = cloneValue
           this.$props.callback(cloneValue)
+          if (this.$props.closeOnClose) {
+            this.$root.$store.dispatch('changeSelectOpen', '')
+          }
         }
       },
       /*----------------------*/

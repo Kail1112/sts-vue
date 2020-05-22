@@ -63,10 +63,12 @@
   padding-top: 9px / $font-size * 1em;
   .sts-icon {
     &.sts-iconarrow-bottom {
+      display: block;
       position: absolute;
       bottom: 18px / 4px * 1em;
       right: 10px / 4px * 1em;
       font-size: 4px / $font-size * 1em;
+      height: 4px / 4px * 1em;
       z-index: 5;
       transition: color .25s linear, transform .25s linear;
     }
@@ -98,3 +100,5 @@
   max-width: 100%;
   margin-top: 5px / 10px * 1em;
 }
+
+@import "./index.simple";

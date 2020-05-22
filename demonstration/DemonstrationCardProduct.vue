@@ -82,6 +82,26 @@
         </div>
       </div>
     </div>
+    <div class="normal-block margin-top margin-bottom">
+      <h3>Вариант: simple</h3>
+      <hr/>
+    </div>
+    <div class="normal-block margin-bottom">
+      <div class="row">
+        <div class="col-md-5">
+          <Select :id="'test-select-5'"
+                  :placeholder="'Тестовое поле №2'"
+                  :values="[
+                    { id: 0, value: 'Тестовое значение №1', type: 'normal', name: 'test-select-16' },
+                    { id: 1, value: 'Тестовое значение №2', type: 'normal', name: 'test-select-17' },
+                    { id: 2, value: 'Тестовое значение №3', type: 'normal', name: 'test-select-18' },
+                    { id: 3, value: 'Тестовое значение №4', type: 'normal', name: 'test-select-19' },
+                    { id: 4, value: 'Тестовое значение №5', type: 'normal', name: 'test-select-20' }
+                  ]" :more-class="'select-simple'" :callback="test"
+                  :start-value="0"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
