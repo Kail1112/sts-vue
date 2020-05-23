@@ -1,0 +1,24 @@
+@import "../../assets/var";
+
+.not-found-image {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 30px / $font-size * 1em;
+  svg {
+    display: block;
+    width: 100%;
+    max-width: 600px / $font-size * 1em;
+    //max-height: 223.9455px / $font-size * 1em;
+    margin: 0 auto;
+    .red {
+      fill: $color-red
+    }
+    .red-thin {
+      fill: $color-red-thin
+    }
+    .red-dark {
+      fill: $color-red-dark
+    }
+  }
+}
+

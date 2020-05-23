@@ -5,7 +5,7 @@
         <div class="row justify-space-between align-items-center">
           <div class="col-auto">
             <Select :id="'header-select-lang-system'"
-                    :placeholder="'<b>Язык: </b>'"
+                    :placeholder="`<b>${getTitle('lang')}:</b>`"
                     :values="getLangArray"
                     :more-class="'select-simple'"
                     :close-on-close="true"

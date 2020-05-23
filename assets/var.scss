@@ -16,6 +16,12 @@ $media-lg: 992px;
 $media-md: 769px;
 $media-sm: 575px;
 
+$media-max-xxl: ($media-xxl - 1px) / $font-size * 1em;
+$media-max-xl: ($media-xl - 1px) / $font-size * 1em;
+$media-max-lg: ($media-lg - 1px) / $font-size * 1em;
+$media-max-md: ($media-md - 1px) / $font-size * 1em;
+$media-max-sm: ($media-sm - 1px) / $font-size * 1em;
+
 $col-1: 100 / 24 * 1%;
 $col-2: 100 / 24 * 2%;
 $col-3: 100 / 24 * 3%;

@@ -24,11 +24,12 @@
   }
 }
 
-@media (max-width: ($media-xxl - 1px) / $font-size * 1em) {
+@media (max-width: $media-max-xxl) {
   .footer-bottom {
-    font-size: 14px;
+    font-size: 14px / $font-size * 1em;
   }
 }
+
 @media (min-width: $media-xxl / $font-size * 1em) {
   .footer-top {
     .links {

@@ -41,7 +41,8 @@
       order: 2;
       height: auto;
       width: auto;
-      min-width: auto;
+      min-height: 33px / 12px * 1em;
+      min-width: 70px / 12px * 1em;
       flex-grow: 2;
       border-color: transparent;
       padding: (8px / 12px * 1em) (16px / 12px * 1em) (8px / 12px * 1em) (12px / 12px * 1em);

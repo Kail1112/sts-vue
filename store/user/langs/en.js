@@ -2,8 +2,12 @@ const enLang = {
   'not-know': 'Unknown',
   'show-all': 'Show all',
   'more-details': 'More details',
+  'lang': 'Language',
   'russian': 'Russian',
   'english': 'English',
+  'go-home': 'Go to the main page',
+  'page-not-found': 'Page not found',
+  'page-not-found-detail': 'The page you are trying to access does not exist. <br> Try using the search',
   /* Все что связано с формами */
   'form-auth': 'Authorization',
   'form-register': 'Registration',
