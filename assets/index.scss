@@ -22,12 +22,26 @@ body, html {
   }
 }
 
+body, html, #__nuxt, #__layout {
+  height: 100%;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.content-page {
+  flex: 1 0 auto;
+}
+.header, .footer {
+  flex: 0 0 auto;
+}
+
 body, html, button, input, textarea, blockquote {
   font-family: $font-family;
 }
 
 .main {
-  display: block;
   width: 100%;
   overflow: hidden;
   &.overflow {
