@@ -1,0 +1,27 @@
+@import "../../../../../../assets/var";
+
+.header-search {
+  display: block;
+  width: 100%;
+  padding: (15px / $font-size * 1em) 0;
+}
+.header-search-input {
+  display: block;
+  width: 100%;
+  padding: (2px / 18px * 1em) 0;
+  font-size: 18px / $font-size * 1em;
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: unset;
+  background-color: transparent;
+  color: #fff;
+  opacity: 0.5;
+  transition: opacity .25s linear;
+  &:focus {
+    opacity: 1;
+  }
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.75)
+  }
+}

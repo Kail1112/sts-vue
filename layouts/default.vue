@@ -80,7 +80,8 @@
             rectDocument = document.body.getBoundingClientRect(),
             isDocumentOverflowing = rectDocument.left + rectDocument.right < window.innerWidth,
             scrollbarWidth = this.getScrollbarWidth()
-          if (isDocumentOverflowing || isDocumentOverflowing !== 0) {
+          // if (isDocumentOverflowing || isDocumentOverflowing !== 0) {
+          if (isDocumentOverflowing) {
             parseFloat(doc.style.paddingRight) !== scrollbarWidth && (doc.style.paddingRight = `${scrollbarWidth}px`)
           }
           if (overflowBody) {

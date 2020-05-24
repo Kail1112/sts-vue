@@ -4,29 +4,27 @@
       <div class="header-top-wrapper">
         <div class="row justify-space-between align-items-center">
           <div class="col-auto">
-            <Select :id="'header-select-lang-system'"
-                    :placeholder="`<b>${getTitle('lang')}:</b>`"
-                    :values="getLangArray"
-                    :more-class="'select-simple'"
-                    :close-on-close="true"
-                    :start-value="0"
-                    :callback="changeLang"/>
+            <div class="header-top-lang">
+              <Select :id="'header-select-lang-system'"
+                      :placeholder="`<b>${getTitle('lang')}:</b>`"
+                      :values="getLangArray"
+                      :more-class="'select-simple'"
+                      :close-on-close="true"
+                      :start-value="0"
+                      :callback="changeLang"/>
+            </div>
           </div>
 
           <div class="col-auto">
-            <div class="row row-small">
+            <div class="header-top-buttons">
               {{/* Лк | Авторизация */}}
-              <div class="col-auto">
-                <HeaderUserPanel/>
-              </div>
+              <HeaderUserPanel/>
               {{/* Лк | Авторизация - END */}}
 
               {{/* Сравнение */}}
-              <div class="col-auto">
-                <button class="header-btn">
-                  <span class="sts-icon sts-iconchart-bar"></span>
-                </button>
-              </div>
+              <button class="header-btn">
+                <span class="sts-icon sts-iconchart-bar"></span>
+              </button>
               {{/* Сравнение - END */}}
             </div>
           </div>

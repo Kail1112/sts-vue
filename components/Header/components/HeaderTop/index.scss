@@ -4,8 +4,8 @@
   display: block;
   width: 100%;
   border-bottom: 1px solid $color-gray-dark;
-  padding-top: 5px / $font-size * 1em;
-  padding-bottom: 5px / $font-size * 1em;
+  //padding-top: 5px / $font-size * 1em;
+  //padding-bottom: 5px / $font-size * 1em;
   position: relative;
   left: 0;
   top: 0;
@@ -16,11 +16,36 @@
     }
   }
 }
+.header-top-lang {
+  display: block;
+  max-width: 100%;
+  padding: (6px / $font-size * 1em) (20px / $font-size * 1em);
+  border-left: 1px solid $color-gray-dark;
+  border-right: 1px solid $color-gray-dark;
+}
+.header-top-buttons {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  .popup {
+    padding-right: 15px / $font-size * 1em;
+    padding-left: 15px / $font-size * 1em;
+  }
+  & > .popup,
+  & > .header-btn {
+    border-left: 1px solid $color-gray-dark;
+    &:last-child {
+      border-right: 1px solid $color-gray-dark;
+    };
+  }
+}
 .header-btn {
   font-size: 15px / $font-size * 1em;
   display: block;
-  height: 35px / 15px * 1em;
-  width: 35px / 15px * 1em;
+  height: 45px / 15px * 1em;
+  width: 45px / 15px * 1em;
   position: relative;
   left: 0;
   top: 0;
@@ -51,7 +76,7 @@
   position: relative;
   left: 0;
   top: 0;
-  padding: (9px / $font-size * 1em) (17.94px / $font-size * 1em) (9px / $font-size * 1em) (23.06px / $font-size * 1em);
+  padding: (14px / $font-size * 1em) (17.94px / $font-size * 1em) (14px / $font-size * 1em) (23.06px / $font-size * 1em);
   border: 0;
   outline: none;
   -webkit-appearance: unset;

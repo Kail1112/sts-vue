@@ -9,6 +9,10 @@
           </div>
           {{/* catalog - END */}}
 
+          <div class="col-xxl-14 col-xl-12">
+            <HeaderBottomSearch/>
+          </div>
+
           {{/* cart */}}
           <div class="col-xxl-5 col-xl-6">
             <HeaderBottomCart/>
@@ -21,16 +25,18 @@
 </template>
 
 <script>
-  import './index.scss';
+    import './index.scss';
 
-  import HeaderBottomCatalog from "./components/HeaderBottomCatalog/HeaderBottomCatalog";
-  import HeaderBottomCart from "./components/HeaderBottomCart/HeaderBottomCart";
+    import HeaderBottomCatalog from "./components/HeaderBottomCatalog/HeaderBottomCatalog";
+    import HeaderBottomSearch from "./components/HeaderBottomSearch/HeaderBottomSearch";
+    import HeaderBottomCart from "./components/HeaderBottomCart/HeaderBottomCart";
 
-  export default {
-    name: "HeaderBottom",
-    components: {
-      HeaderBottomCatalog,
-      HeaderBottomCart
+    export default {
+        name: "HeaderBottom",
+        components: {
+            HeaderBottomCatalog,
+            HeaderBottomSearch,
+            HeaderBottomCart
+        }
     }
-  }
 </script>

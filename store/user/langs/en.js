@@ -25,9 +25,10 @@ const enLang = {
   /* Все что связано с поиском */
   'search-title': 'Search',
   'search-sub-title': 'in the directory',
+  'search-placeholder': 'Search the site',
   /* Все что связано с корзиной */
   'cart-title': 'Cart',
-  'cart-empty': 'Cart is empty',
+  'cart-empty': 'There are no products in the cart',
   'cart-all-price-title': 'Total amount:',
   'cart-add-product': 'Add to Cart',
   'cart-remove-product': 'Remove from cart',

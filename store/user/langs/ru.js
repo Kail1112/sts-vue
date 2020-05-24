@@ -25,9 +25,10 @@ const ruLang = {
   /* Все что связано с поиском */
   'search-title': 'Поиск',
   'search-sub-title': 'в каталоге',
+  'search-placeholder': 'Поиск по сайту',
   /* Все что связано с корзиной */
   'cart-title': 'Корзина',
-  'cart-empty': 'Корзина пустая',
+  'cart-empty': 'В корзине нет товаров',
   'cart-all-price-title': 'Общая сумма:',
   'cart-add-product': 'Добавить в корзину',
   'cart-remove-product': 'Удалить из корзины',

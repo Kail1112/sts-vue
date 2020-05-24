@@ -77,7 +77,7 @@
             values: { type: Array, default: () => [] },
             startValue: { type: Number, default: -1 },
             moreClass: { type: String, default: '' },
-            closeOnClose: { type: Boolean, default: false },
+            closeOnClose: { type: Boolean, default: true },
             initOnStart: { type: Boolean, default: false },
             callback: { type: Function, default: () => null }
         },

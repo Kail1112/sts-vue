@@ -11,12 +11,6 @@
           </div>
           {{/* Лого - END */}}
 
-          {{/* Поиск в шапке */}}
-          <div class="col-auto">
-            <HeaderMiddleSearch/>
-          </div>
-          {{/* Поиск в шапке - END */}}
-
           {{/* Ссылки в шапке */}}
           <div class="col-auto">
             <HeaderMiddleLinks :links="links"/>
@@ -37,7 +31,6 @@
 <script>
     import './index.scss';
 
-    import HeaderMiddleSearch from "./components/HeaderMiddleSearch/HeaderMiddleSearch";
     import HeaderMiddleLinks from "./components/HeaderMiddleLinks/HeaderMiddleLinks";
     import HeaderMiddleContacts from "./components/HeaderMiddleContacts/HeaderMiddleContacts";
 
@@ -71,7 +64,6 @@
             /*----------------------*/
         },
         components: {
-            HeaderMiddleSearch,
             HeaderMiddleLinks,
             HeaderMiddleContacts
         }
