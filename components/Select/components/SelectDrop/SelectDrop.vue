@@ -133,7 +133,7 @@
         components: {
             RadioInput
         },
-        mounted () {
+        created () {
             this.updateStartValue()
         }
     }
