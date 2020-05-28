@@ -6,7 +6,7 @@ export default {
   name: 'PopUp',
   props: {
     keyPopUp: { type: String, default: "", required: true },
-    btn: { type: Object, default: () => ({ tagName: "", className: "" }) },
+    btn: { type: Object, default: () => ({ tagName: "", className: "" }), required: true },
     functionOnOpen: { type: Function, default: () => null }
   },
   methods: {
@@ -55,8 +55,21 @@ export default {
     PopUpBtn,
   },
   render (h) {
-    return h('div', { class: 'popup' }, [
-
-    ])
+    const self = this
+    // Кнопка
+    const btn = self.$props.btn.tagName !== '' && self.$props.btn.className !== '' ? h(PopUpBtn, {
+      props: {
+        btn: self.$props.btn,
+        isActive: self.isOpened,
+        onClickBtn: self.onClickBtn
+      },
+      ref: 'popupBtn'
+    }, this.$slots.btn) : null
+    // Inner
+    const inner = self.isOpened ? this.$slots.inner : null
+    // Контент
+    const content = h('transition', { props: { name: 'fade' } }, inner)
+    // render
+    return h('div', { class: 'popup' }, [btn, content])
   }
 }
