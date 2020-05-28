@@ -8,6 +8,8 @@ const ruLang = {
   'go-home': 'Перейти на главную страницу',
   'page-not-found': 'Страница не найдена',
   'page-not-found-detail': 'Страница, на которую вы пытаетесь попасть, не существует.<br>Попробуйте воспользоваться поиском',
+  'copyright': 'Все права защищены. Указанная стоимость товаров и условия их приобретения действительны по состоянию на текущую дату.',
+  'date-copyright': 'Smart Technology Service © 2020',
   /* Все что связано с формами */
   'form-auth': 'Авторизация',
   'form-register': 'Регистрация',
@@ -40,6 +42,8 @@ const ruLang = {
   'catalog-title': 'Каталог',
   'catalog-category': 'Категории',
   'catalog-header-btn': 'Список категорий',
+  /* Все что связано с оплатой */
+  'payment-methods': 'Способы оплаты:',
 }
 
 export default ruLang

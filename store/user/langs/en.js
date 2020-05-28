@@ -8,6 +8,8 @@ const enLang = {
   'go-home': 'Go to the main page',
   'page-not-found': 'Page not found',
   'page-not-found-detail': 'The page you are trying to access does not exist. <br> Try using the search',
+  'copyright': 'All rights reserved. The indicated value of the goods and the conditions for their purchase are valid as of the current date.',
+  'date-copyright': 'Smart Technology Service © 2020',
   /* Все что связано с формами */
   'form-auth': 'Authorization',
   'form-register': 'Registration',
@@ -40,6 +42,8 @@ const enLang = {
   'catalog-title': 'Catalog',
   'catalog-category': 'Categories',
   'catalog-header-btn': 'List of categories',
+  /* Все что связано с оплатой */
+  'payment-methods': 'Payment Methods:',
 }
 
 export default enLang

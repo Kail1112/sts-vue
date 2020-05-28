@@ -21,7 +21,7 @@
       <SelectDrop :open="isOpen"
                   :values="values"
                   :start-value="startValue"
-                  :close-on-close="closeOnClose"
+                  :close-on-click="closeOnClick"
                   :callback="callbackForDrop"/>
       {{/* drop down - END */}}
     </div>
@@ -77,7 +77,7 @@
             values: { type: Array, default: () => [] },
             startValue: { type: Number, default: -1 },
             moreClass: { type: String, default: '' },
-            closeOnClose: { type: Boolean, default: true },
+            closeOnClick: { type: Boolean, default: true },
             initOnStart: { type: Boolean, default: false },
             callback: { type: Function, default: () => null }
         },
