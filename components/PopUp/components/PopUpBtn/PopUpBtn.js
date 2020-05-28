@@ -9,11 +9,8 @@ export default {
   },
   render (h) {
     const self = this
-    // Все классы для кнопки
-    const classList = (self.$props.btn.className !== '' ? self.$props.btn.className : '') + (self.$props.isActive ? ' active' : '')
-    // render
     return h(withNormalBlock, [
-      h(self.btn.tagName, { class: classList, on: { click: self.$props.onClickBtn } }, self.$slots.default)
+      h(self.btn.tagName, { class: [this.$props.btn.className, { 'active': this.$props.isActive }], on: { click: this.$props.onClickBtn } }, this.$slots.default)
     ])
   }
 }

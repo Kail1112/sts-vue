@@ -193,9 +193,9 @@ export default {
     const self = this
     const {mainMoreClass, moreClass, cart: onlyCart} = self.$props
     // Список классов для основного элемента
-    const mainClass = mainMoreClass !== '' ? 'normal-block' : mainMoreClass
+    const mainClass = ['normal-block', mainMoreClass]
     // Список классов для карточки
-    const classList = moreClass !== '' ? `product ${moreClass}` : 'product'
+    const classList = ['product', moreClass]
     // Индикации активности
     const activeIndicator = self.checkForActive ? h(LoadingIndicator) : null
     // Нижняя часть карточки
@@ -210,7 +210,7 @@ export default {
       productInCart: self.productInCart,
       btnCartAction: self.btnCartAction
     }
-    const bottomElement = !onlyCart ? h(ProductCardBottom, { props: objPropsForBottom }) : h(ProductCardCartPrice, { props: { id: self.$props.id, spaceBetweenNumber } })
+    const bottomElement = !onlyCart ? h(ProductCardBottom, { props: objPropsForBottom }) : h(ProductCardCartPrice, { props: { id: self.$props.id, spaceBetweenNumber: objPropsForBottom['spaceBetweenNumber'] } })
     // render
     const objPropsForTop = {
       onlyCart: self.$props.cart,

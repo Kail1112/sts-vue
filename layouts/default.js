@@ -129,21 +129,10 @@ export default {
   render (h) {
     const self = this
     const classForMain = 'main' + (self.isOverflow ? ' overflow' : '')
-    return h('main',
-      {
-        class: classForMain,
-        on: {
-          click: (e) => {
-            self.clickOnDocument(e)
-          }
-        }
-      }, [
-        h(Header),
-        h('div', { class: 'content-page' }, [
-          h(Nuxt)
-        ]),
-        h(Footer),
-      ]
-    )
+    return h('main', { class: classForMain, on: { click: (e) => self.clickOnDocument(e) } }, [
+      h(Header),
+      h('div', { class: 'content-page' }, [ h(Nuxt) ]),
+      h(Footer),
+    ])
   }
 }

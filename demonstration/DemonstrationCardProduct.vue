@@ -80,6 +80,17 @@
                   ]" :callback="test"
                   :start-value="0"/>
         </div>
+        <div class="col-md-8">
+          <Select :id="'test-select-7'"
+                  :placeholder="'Все типы в одном месте'"
+                  :values="[
+                    { id: 1, value: 'Тестовое значение №17', type: 'checkbox', name: 'test-select-13' },
+                    { id: 2, value: 'Тестовое значение №18', type: 'checkbox', name: 'test-select-14' },
+                    { id: 0, value: 'Тестовое значение №16', type: 'normal', name: 'test-select-12' },
+                    { id: 3, value: 'Тестовое значение №19', type: 'radio', name: 'test-select-15' },
+                    { id: 4, value: 'Тестовое значение №20', type: 'radio', name: 'test-select-15' }
+                  ]" :callback="test"/>
+        </div>
       </div>
     </div>
     <div class="normal-block margin-top margin-bottom">
@@ -99,6 +110,17 @@
                     { id: 4, value: 'Тестовое значение №5', type: 'normal', name: 'test-select-20' }
                   ]" :more-class="'select-simple'" :callback="test"
                   :start-value="0"/>
+        </div>
+        <div class="col-md-5">
+          <Select :id="'test-select-6'"
+                  :placeholder="'Тестовое поле №2'"
+                  :values="[
+                    { id: 0, value: 'Тестовое значение №1', type: 'normal', name: 'test-select-16' },
+                    { id: 1, value: 'Тестовое значение №2', type: 'normal', name: 'test-select-17' },
+                    { id: 2, value: 'Тестовое значение №3', type: 'normal', name: 'test-select-18' },
+                    { id: 3, value: 'Тестовое значение №4', type: 'normal', name: 'test-select-19' },
+                    { id: 4, value: 'Тестовое значение №5', type: 'normal', name: 'test-select-20' }
+                  ]" :more-class="'select-simple'" :callback="test"/>
         </div>
       </div>
     </div>

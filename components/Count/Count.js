@@ -45,37 +45,18 @@ export default {
   },
   render (h) {
     const self = this
-    const classForBlock = 'count' + (self.$props.moreClass !== '' ? ` ${self.$props.moreClass}` : '')
     return h(self.$props.tag, {
-      class: classForBlock,
-      on: {
-        input: (e) => (Number.isInteger(e.target.value * 1) && !Number.isNaN(e.target.value * 1)) && (self.val = e.target.value * 1)
-      }
+      class: ['count', self.$props.moreClass],
+      on: { input: (e) => (Number.isInteger(e.target.value * 1) && !Number.isNaN(e.target.value * 1)) && (self.val = e.target.value * 1) }
     }, [
-      h('button', {
-        class: 'count-btn count-btn-minus',
-        on: {
-          click: () => self.minus()
-        }
-      }, '-'),
+      h('button', { class: 'count-btn count-btn-minus', on: { click: self.minus } }, '-'),
       h('input', {
         class: 'count-input',
-        attrs: {
-          type: 'text'
-        },
-        domProps: {
-          value: self.val
-        },
-        on: {
-          input: () => self.$emit('input')
-        }
+        attrs: { type: 'text' },
+        domProps: { value: self.val },
+        on: { input: () => self.$emit('input') }
       }),
-      h('button', {
-        class: 'count-btn count-btn-plus',
-        on: {
-          click: () => self.plus()
-        }
-      }, '+')
+      h('button', { class: 'count-btn count-btn-plus', on: { click: self.plus } }, '+')
     ])
   }
 }
