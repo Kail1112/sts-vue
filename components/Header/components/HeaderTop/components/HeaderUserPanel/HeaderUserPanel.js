@@ -42,14 +42,6 @@ export default {
     removeOverflow () { this.$root.$store.getters.GET_NOW_OVERFLOW && this.$root.$store.dispatch('changeOverflow', false) }
     /*----------------------*/
   },
-  components: {
-    PopUp,
-    PopUpHolder,
-    PopUpBody,
-    PopUpTop,
-    FormsLogin,
-    FormsRegister
-  },
   render (h) {
     const self = this
     // Кнопка

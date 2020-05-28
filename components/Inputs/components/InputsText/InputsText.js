@@ -14,9 +14,6 @@ export default {
     startValue: { type: String, default: '' },
     maxSymbol: { type: Number, default: 0 }
   },
-  components: {
-    InputsPlaceHolder
-  },
   created () {
     if (this.$props.startValue !== '') this.val = this.$props.startValue
   },

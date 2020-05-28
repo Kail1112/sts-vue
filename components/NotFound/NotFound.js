@@ -21,9 +21,6 @@ export default {
     getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
     /*----------------------*/
   },
-  components: {
-    NotFoundImage
-  },
   render (h) {
     const self = this
     return h('div', { class: 'normal-block margin-bottom margin-top' }, [

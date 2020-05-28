@@ -73,11 +73,6 @@ export default {
     classForLabels: (value = false, success = false, error = false) => `label-input${value ? ' val' : ''}${error ? ' error' : ''}${success ? ' success' : ''}`,
     /*----------------------*/
   },
-  components: {
-    InputsText,
-    InputsSignature,
-    RadioInput
-  },
   render (h) {
     const self = this
     const password = h('label', {

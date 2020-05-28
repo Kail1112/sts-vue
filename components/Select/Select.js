@@ -88,9 +88,6 @@ export default {
     },
     /*----------------------*/
   },
-  components: {
-    SelectDrop
-  },
   render (h) {
     const self = this
     const {placeholder, startValue} = self.$props

@@ -51,9 +51,6 @@ export default {
     },
     /*----------------------*/
   },
-  components: {
-    PopUpBtn,
-  },
   render (h) {
     const self = this
     // Кнопка

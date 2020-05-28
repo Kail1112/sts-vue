@@ -8,9 +8,6 @@ export default {
   props: {
     size: { type: String, default: 'large' }
   },
-  components: {
-    LoadingIndicatorLarge
-  },
   render (h) {
     let elementLoading = [h(LoadingIndicatorLarge)]
     return h('div', { class: 'loading' }, elementLoading)

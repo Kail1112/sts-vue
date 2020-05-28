@@ -16,9 +16,6 @@ export default {
     },
     /*----------------------*/
   },
-  components: {
-    Inputs
-  },
   render (h) {
     const self = this
     // Какие поля отрисовать

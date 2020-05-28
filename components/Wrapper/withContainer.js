@@ -4,7 +4,6 @@ export default {
     moreClass: { type: String, default: '' }
   },
   render (h) {
-    const classList = 'container' + (this.$props.moreClass !== '' ? ` ${this.$props.moreClass}` : '')
-    return h('div', { class: classList }, this.$slots.default)
+    return h('div', { class: ['container', this.$props.moreClass] }, this.$slots.default)
   }
 }

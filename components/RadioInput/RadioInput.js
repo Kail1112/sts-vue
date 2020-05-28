@@ -12,9 +12,6 @@ export default {
     moreClass: { type: String, default: '' },
     callback: { type: Function, default: () => null }
   },
-  components: {
-    RadioInputSignature
-  },
   render (h) {
     const self = this
     const {type, checked, signature, name, moreClass} = self.$props

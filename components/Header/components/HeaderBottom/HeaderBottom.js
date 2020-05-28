@@ -7,11 +7,6 @@ import HeaderBottomCart from "./components/HeaderBottomCart/HeaderBottomCart";
 
 export default {
   name: 'HeaderBottom',
-  components: {
-    HeaderBottomCatalog,
-    HeaderBottomSearch,
-    HeaderBottomCart
-  },
   render (h) {
     // Каталог
     const catalogElement = h('div', { class: 'col-xxl-5 col-xl-6' }, [h(HeaderBottomCatalog)])

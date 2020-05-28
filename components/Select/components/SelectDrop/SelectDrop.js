@@ -104,7 +104,7 @@ export default {
         }, valueItem) : null
         // Отображение checkbox | radio
         const inputItem = type === 'radio' || type === 'checkbox' ? h(RadioInput, {
-          props: { type, checked: value.checkbox[name] !== undefined, signature: valueItem, name, moreClass: classList(type === 'radio' ? 'input-radio' : 'input-checkbox', index === values.length - 1), callback: () => selectOption(type, valueItem, name) }
+          props: { type, checked: type === 'checkbox' ? value.checkbox[name] !== undefined : value.radio === valueItem, signature: valueItem, name, moreClass: classList(type === 'radio' ? 'input-radio' : 'input-checkbox', index === values.length - 1), callback: () => selectOption(type, valueItem, name) }
         }) : null
         // render
         return h('li', { props: { key: `drop-item-${index}-${name}` } }, [

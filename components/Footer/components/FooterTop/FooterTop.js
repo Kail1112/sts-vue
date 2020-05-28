@@ -5,10 +5,6 @@ import FooterTopRight from './components/FooterTopRight/FooterTopRight';
 
 export default {
   name: 'FooterTop',
-  components: {
-    FooterTopLeft,
-    FooterTopRight
-  },
   render (h) {
     return h('div', { class: 'footer-top' }, [
       h('div', { class: 'footer-top' }, [

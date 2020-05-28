@@ -33,10 +33,6 @@ export default {
     },
     /*----------------------*/
   },
-  components: {
-    HeaderMiddleLinks,
-    HeaderMiddleContacts
-  },
   render (h) {
     const self = this
     // Лого

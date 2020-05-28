@@ -23,9 +23,6 @@ export default {
     onClickRegister () { this.$props.callbackClickRegisterBtn('register') },
     /*----------------------*/
   },
-  components: {
-    Inputs
-  },
   render (h) {
     const self = this
     // Поле ввода логина

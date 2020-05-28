@@ -62,11 +62,6 @@ export default {
     },
     /*----------------------*/
   },
-  components: {
-    withContainer,
-    HeaderUserPanel,
-    Select
-  },
   render (h) {
     const self = this
     // Выбор языка

@@ -116,11 +116,6 @@ export default {
     changeShowPassword () { this.typeInput = this.typeInput === 'password' ? 'text' : 'password' },
     /*----------------------*/
   },
-  components: {
-    InputsText,
-    InputsSignature,
-    RadioInput
-  },
   render (h) {
     const self = this
     const elementShowPassword = self.$props.mode === 'single' && self.$props.switchPasswordShow ? h(RadioInput, {

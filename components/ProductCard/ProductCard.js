@@ -182,13 +182,6 @@ export default {
     removeLoading () { this.$root.$store.dispatch('setActiveComponent', {id: `product-card-id-${this.$props.id}`, active: false}) },
     /*----------------------*/
   },
-  components: {
-    LoadingIndicator,
-    ProductCardTop,
-    ProductCardMiddle,
-    ProductCardBottom,
-    ProductCardCartPrice
-  },
   render (h) {
     const self = this
     const {mainMoreClass, moreClass, cart: onlyCart} = self.$props
