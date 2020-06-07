@@ -1,6 +1,7 @@
 import './index.scss';
 
 import maskInput from "../../utils/mask-input";
+import objForEach from "../../utils/object-for-each";
 
 import InputsText from './components/InputsText/InputsText';
 import InputsSignature from './components/InputsSignature/InputsSignature';
@@ -14,7 +15,8 @@ export default {
       typeInput: 'password',
       input: false, /// был ли введен символ
       error: false, /// была ли ошибка
-      success: false /// успешно ли
+      success: false, /// успешно ли
+      maskSplit: [], indexEmpty: [], registerSymbols: []
     }
   },
   props: {
@@ -28,7 +30,12 @@ export default {
     onSuccess: { type: Function, default: () => null }, /// колбек успешный
     onError: { type: Function, default: () => null }, /// колбек с ошибкой
     patternToCheck: { type: String, default: '' }, /// регулярка проверки правильности заполнения
-    mask: { type: String, default: '' } /// маска заполнения
+    mask: { type: String, default: '' }, /// маска заполнения
+    mapMask: { type: Object, default: () => ({
+        'D': (symbol) => !Number.isNaN(symbol * 1) && Number.isInteger(symbol * 1),
+        'S': (symbol) => /[a-z]/gi.test(symbol) || /[А-ЯЁ]/gi.test(symbol)
+      })
+    }
   },
   methods : {
     /// getTitle - получение системного сообщения в зависимости от языка
@@ -80,26 +87,34 @@ export default {
       /// проверка данных на соответствие
       if (value !== '') {
         if (mask !== '') {
-          const filters = {
-            S: (symbol) => /[a-zA-Z]/g.test(symbol),
-            D: (symbol) => Number.isInteger(symbol * 1)
-          }
-          const result = maskInput(value, filters, mask)
+          const result = maskInput(value, mask, this.$props.mapMask)
           if (result !== '') { if (!input) changeInput(true) }
           else { if (input) changeInput(false) }
           value = result
         }
-        if (type === 'email') {
-          const regEmail = regularFunction('(\\d|\\w)*\\@(\\d|\\w){2,}\\.(\\d|\\w){2,}', value)
-          if (regEmail) typeCallback = setSuccess(value)
-          else typeCallback = setError(value)
-        } else {
-          if (patternToCheck !== '') {
-            const testRegular = regularFunction(patternToCheck, value)
-            if (testRegular) typeCallback = setSuccess(value)
-            else typeCallback = setError(value)
-          }
-        }
+
+
+        // if (mask !== '') {
+        //   const filters = {
+        //     S: (symbol) => /[a-zA-Z]/g.test(symbol),
+        //     D: (symbol) => Number.isInteger(symbol * 1)
+        //   }
+        //   const result = maskInput(value, filters, mask)
+        //   if (result !== '') { if (!input) changeInput(true) }
+        //   else { if (input) changeInput(false) }
+        //   value = result
+        // }
+        // if (type === 'email') {
+        //   const regEmail = regularFunction('(\\d|\\w)*\\@(\\d|\\w){2,}\\.(\\d|\\w){2,}', value)
+        //   if (regEmail) typeCallback = setSuccess(value)
+        //   else typeCallback = setError(value)
+        // } else {
+        //   if (patternToCheck !== '') {
+        //     const testRegular = regularFunction(patternToCheck, value)
+        //     if (testRegular) typeCallback = setSuccess(value)
+        //     else typeCallback = setError(value)
+        //   }
+        // }
       } else {
         if (error) changeError(false)
         if (success) changeSuccess(false)
@@ -115,6 +130,27 @@ export default {
     /// changeShowPassword - показать ли пароль
     changeShowPassword () { this.typeInput = this.typeInput === 'password' ? 'text' : 'password' },
     /*----------------------*/
+  },
+  created () {
+    const {mask, mapMask} = this.$props
+    if (mask !== '') {
+      let lastString = '', maskSplit = [], indexEmpty = [], registerSymbols = []
+      for (let i = 0; i < mask.length; i++) {
+        if (!mapMask.hasOwnProperty(mask[i])) {
+          lastString += mask[i]
+        } else {
+          lastString !== '' && maskSplit.push(lastString)
+          registerSymbols.push(i)
+          maskSplit.push(mask[i])
+          indexEmpty.push(maskSplit.length - 1)
+          lastString = ''
+        }
+      }
+      lastString !== '' && maskSplit.push(lastString)
+      this.maskSplit = maskSplit
+      this.indexEmpty = indexEmpty
+      this.registerSymbols = registerSymbols
+    }
   },
   render (h) {
     const self = this

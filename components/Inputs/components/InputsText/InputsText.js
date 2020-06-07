@@ -22,26 +22,32 @@ export default {
     let attrsForInput = { type: self.$props.type }
     self.$props.maxSymbol !== 0 && (attrsForInput['maxlength'] = self.$props.maxSymbol)
     return h('span', {
-      class: 'label-input-holder',
-      on: {
-        input: async (e) => {
-          const value = e.target.value
-          if (value !== undefined) {
-            const {callback} = self.$props
-            const result = await callback(value)
-            if (result !== null && result !== false) self.val = result
-            if (result === false) self.val = e.target.value
-          }
-        }
-      }
+      class: 'label-input-holder'
     }, [
       h('input', {
-        domProps: {
-          value: self.val
-        },
         attrs: attrsForInput,
         on: {
-          input: () => self.$emit('input')
+          input: (e) => {
+            const value = e.target.value
+            if (value !== undefined) {
+              const {callback} = self.$props
+              let result = callback(value)
+              if (result !== null && result !== false) {
+                const isDelete = self.val && value.length < self.val.length;
+                if (isDelete) {
+                  if (/(\W|\D)/g.test(result[result.length - 1])) {
+                    let countDelete = 1
+                    for (let i = result.length - 2; i > 0; i--) {
+                      if (/(\w|\d)/g.test(result[i])) break;
+                      else countDelete++;
+                    }
+                    e.target.value = result.slice(0, result.length - countDelete)
+                  } else e.target.value = result
+                } else e.target.value = result
+              }
+              self.val = value
+            }
+          }
         }
       }),
       h(InputsPlaceHolder, {
