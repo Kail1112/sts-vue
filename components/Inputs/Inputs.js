@@ -16,7 +16,6 @@ export default {
       input: false, /// был ли введен символ
       error: false, /// была ли ошибка
       success: false, /// успешно ли
-      maskSplit: [], indexEmpty: [], registerSymbols: []
     }
   },
   props: {
@@ -130,27 +129,6 @@ export default {
     /// changeShowPassword - показать ли пароль
     changeShowPassword () { this.typeInput = this.typeInput === 'password' ? 'text' : 'password' },
     /*----------------------*/
-  },
-  created () {
-    const {mask, mapMask} = this.$props
-    if (mask !== '') {
-      let lastString = '', maskSplit = [], indexEmpty = [], registerSymbols = []
-      for (let i = 0; i < mask.length; i++) {
-        if (!mapMask.hasOwnProperty(mask[i])) {
-          lastString += mask[i]
-        } else {
-          lastString !== '' && maskSplit.push(lastString)
-          registerSymbols.push(i)
-          maskSplit.push(mask[i])
-          indexEmpty.push(maskSplit.length - 1)
-          lastString = ''
-        }
-      }
-      lastString !== '' && maskSplit.push(lastString)
-      this.maskSplit = maskSplit
-      this.indexEmpty = indexEmpty
-      this.registerSymbols = registerSymbols
-    }
   },
   render (h) {
     const self = this
