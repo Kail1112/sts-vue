@@ -91,29 +91,17 @@ export default {
           else { if (input) changeInput(false) }
           value = result
         }
-
-
-        // if (mask !== '') {
-        //   const filters = {
-        //     S: (symbol) => /[a-zA-Z]/g.test(symbol),
-        //     D: (symbol) => Number.isInteger(symbol * 1)
-        //   }
-        //   const result = maskInput(value, filters, mask)
-        //   if (result !== '') { if (!input) changeInput(true) }
-        //   else { if (input) changeInput(false) }
-        //   value = result
-        // }
-        // if (type === 'email') {
-        //   const regEmail = regularFunction('(\\d|\\w)*\\@(\\d|\\w){2,}\\.(\\d|\\w){2,}', value)
-        //   if (regEmail) typeCallback = setSuccess(value)
-        //   else typeCallback = setError(value)
-        // } else {
-        //   if (patternToCheck !== '') {
-        //     const testRegular = regularFunction(patternToCheck, value)
-        //     if (testRegular) typeCallback = setSuccess(value)
-        //     else typeCallback = setError(value)
-        //   }
-        // }
+        if (type === 'email') {
+          const regEmail = regularFunction('(\\d|\\w)*\\@(\\d|\\w){2,}\\.(\\d|\\w){2,}', value)
+          if (regEmail) typeCallback = setSuccess(value)
+          else typeCallback = setError(value)
+        } else {
+          if (patternToCheck !== '') {
+            const testRegular = regularFunction(patternToCheck, value)
+            if (testRegular) typeCallback = setSuccess(value)
+            else typeCallback = setError(value)
+          }
+        }
       } else {
         if (error) changeError(false)
         if (success) changeSuccess(false)
