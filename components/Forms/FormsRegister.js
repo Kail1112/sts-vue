@@ -1,37 +1,33 @@
 import './index.scss';
 
+import {findRoot} from '../../utils'
+
 import {withNormalBlock} from '../Wrapper/';
-import Inputs from "../Inputs/Inputs";
+import Inputs from "../Inputs/";
 
 export default {
   name: 'FormsRegister',
-  methods: {
-    /// getTitle - получение системного сообщения в зависимости от языка
-    getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
-    /*----------------------*/
-
-    /// onSubmit
-    onSubmit (e) {
-      e.preventDefault()
-    },
-    /*----------------------*/
-  },
-  render (h) {
-    const self = this
+  functional: true,
+  render (h, context) {
+    const root = findRoot(context)
     // Какие поля отрисовать
     const labels = [
-      { placeholder: [self.getTitle('form-input-login')] },
-      { placeholder: [self.getTitle('form-input-email')], type: 'email' },
-      { placeholder: [self.getTitle('form-input-phone-number')], mask: '+DDD (DD) DDD-DD-DD', },
-      { placeholder: [self.getTitle('form-input-generate-password'), self.getTitle('form-input-generate-password-repeat')], mode: 'password-confirm' }
+      { placeholder: [root.getTitle('form-input-login')] },
+      { placeholder: [root.getTitle('form-input-email')], type: 'email' },
+      { placeholder: [root.getTitle('form-input-phone-number')], mask: '+DDD (DD) DDD-DD-DD', },
+      { placeholder: [root.getTitle('form-input-generate-password'), root.getTitle('form-input-generate-password-repeat')], mode: 'password-confirm' }
     ]
     // render
     return h('form', {
       class: 'form login-form',
-      on: { submit: self.onSubmit }
+      on: {
+        submit: (e) => {
+          e.preventDefault()
+        }
+      }
     }, [
       h(withNormalBlock, { props: { moreClass: 'margin-bottom' } }, labels.map(label => h(Inputs, { props: label }))),
-      h('button', { class: 'button full no-margin' }, self.getTitle('form-btn-register'))
+      h('button', { class: 'button full no-margin' }, root.getTitle('form-btn-register'))
     ])
   }
 }

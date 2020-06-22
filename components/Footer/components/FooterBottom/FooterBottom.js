@@ -2,16 +2,14 @@ import {withContainer} from '../../../Wrapper';
 
 export default {
   name: 'FooterBottom',
-  methods: {
-    /// getTitle - получение системного сообщения в зависимости от языка
-    getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
-    /*----------------------*/
+  functional: true,
+  props: {
+    root: { type: Object, required: true }
   },
-  render (h) {
-    const self = this
+  render (h, context) {
     return h(withContainer, [
       h('div', { class: 'footer-bottom' }, [
-        [['p', self.getTitle('copyright')], ['p', self.getTitle('date-copyright')]].map(item => {
+        [['p', context.props.root.getTitle('copyright')], ['p', context.props.root.getTitle('date-copyright')]].map(item => {
           return h(item[0], item[1])
         })
       ])

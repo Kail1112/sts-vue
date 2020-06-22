@@ -1,7 +1,6 @@
 import './index.scss';
 
 import maskInput from "../../utils/mask-input";
-import objForEach from "../../utils/object-for-each";
 
 import InputsText from './components/InputsText/InputsText';
 import InputsSignature from './components/InputsSignature/InputsSignature';

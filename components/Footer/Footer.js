@@ -1,14 +1,19 @@
 import './index.scss';
 
-import FooterTop from './components/FooterTop/FooterTop';
-import FooterBottom from './components/FooterBottom/FooterBottom';
+import FooterTop from './components/FooterTop/';
+import FooterBottom from './components/FooterBottom/';
+
+import {findRoot} from '../../utils'
 
 export default {
   name: 'Footer',
-  render (h) {
+  functional: true,
+  render (h, context) {
+    const root = findRoot(context)
+    // render
     return h('footer', { class: 'footer' }, [
-      h(FooterTop),
-      h(FooterBottom)
+      h(FooterTop, { props: { root: root } }),
+      h(FooterBottom, { props: { root: root } })
     ])
   }
 }

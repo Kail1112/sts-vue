@@ -36,10 +36,6 @@ export default {
     /*----------------------*/
   },
   methods: {
-    /// getTitle - получение системного сообщения в зависимости от языка
-    getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
-    /*----------------------*/
-
     /// changeLang - изменение языка
     changeLang (param) {
       if (param.val[0] !== undefined) {

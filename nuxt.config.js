@@ -1,6 +1,10 @@
 
 module.exports = {
   mode: 'universal',
+  server: {
+    port: 3002, // default: 3000
+    host: '127.0.0.1', // default: localhost
+  },
   /*
   ** Headers of the page
   */
@@ -32,7 +36,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: '~/plugins/filters.js', ssr: true}
+    { src: '~/plugins/filters.js', ssr: true },
+    { src: '~/plugins/main.js', ssr: true }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -61,10 +66,4 @@ module.exports = {
       }
     }
   },
-
-  router: {
-    extendRoutes (routes, resolve) {
-      // console.log(routes)
-    }
-  }
 }

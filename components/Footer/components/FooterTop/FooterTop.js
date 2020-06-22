@@ -5,13 +5,17 @@ import FooterTopRight from './components/FooterTopRight/FooterTopRight';
 
 export default {
   name: 'FooterTop',
-  render (h) {
+  functional: true,
+  props: {
+    root: { type: Object, required: true }
+  },
+  render (h, context) {
     return h('div', { class: 'footer-top' }, [
       h('div', { class: 'footer-top' }, [
         h(withContainer, [
           h('div', { class: 'row row-margin justify-space-between' }, [
             h(FooterTopLeft),
-            h(FooterTopRight)
+            h(FooterTopRight, { props: { root: context.props.root } })
           ])
         ])
       ])

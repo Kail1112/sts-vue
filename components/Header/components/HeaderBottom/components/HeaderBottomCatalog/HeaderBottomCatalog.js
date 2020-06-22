@@ -1,19 +1,19 @@
 import './index.scss';
 
+import {findRoot} from '../../../../../../utils'
+
 export default {
   name: "HeaderBottomCatalog",
-  methods: {
-    /// getTitle - получение системного сообщения в зависимости от языка
-    getTitle (mes) { return this.$root.$store.getters.RETURN_SYSTEM_MESSAGE(this.$root.$store.getters.GET_SYSTEM_LANG, mes) },
-    /*----------------------*/
-  },
-  render (h) {
-    const self = this
-    return h('div', { class: 'header-catalog' }, [
-      h('button', { class: 'header-catalog-btn' }, [
+  functional: true,
+  render (h, context) {
+    const root = findRoot(context)
+    const getTitle = (mes) => root.$store.getters.RETURN_SYSTEM_MESSAGE(root.$store.getters.GET_SYSTEM_LANG, mes)
+    // render
+    return h('div', { class: 'header-category' }, [
+      h('button', { class: 'header-category-btn' }, [
         h('span', { class: 'sts-icon sts-iconmenu' }),
-        h('span', { class: 'text' }, self.getTitle('catalog-title')),
-        h('span', { class: 'text' }, self.getTitle('catalog-header-btn'))
+        h('span', { class: 'text' }, getTitle('catalog-title')),
+        h('span', { class: 'text' }, getTitle('catalog-header-btn'))
       ])
     ])
   }
